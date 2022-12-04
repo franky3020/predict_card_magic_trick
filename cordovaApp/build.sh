@@ -1,0 +1,8 @@
+
+
+
+
+
+
+npx cordova prepare
+
