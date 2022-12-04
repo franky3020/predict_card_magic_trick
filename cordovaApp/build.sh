@@ -1,5 +1,5 @@
 #!/bin/bash
 set -x #echo on
-rm -rf ./platform
+rm -rf ./platforms
 npx cordova prepare
 

@@ -1,6 +1,9 @@
 # magic_poker
 
 
+## 相關設定
+使用 <preference name="Fullscreen" value="true" /> 可達到全螢幕模式
+
 
 
 ## 打包android 步驟
