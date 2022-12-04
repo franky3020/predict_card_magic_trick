@@ -9,7 +9,7 @@ function setup() {
     let myCanvas = createCanvas(width, height);
     myCanvas.parent('myContainer');
 
-    background(220);
+    background(0);
   }
   
   function draw() {
