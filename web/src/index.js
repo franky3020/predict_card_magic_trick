@@ -1,6 +1,4 @@
-const init = require("./init");
-
-
+const InitSetting = require("./InitSetting");
 
 let canStartDraw = false;
 
@@ -8,11 +6,8 @@ const s = (sketch) => {
 
     sketch.setup = () => {
 
-        let width = window.innerWidth;
-        let height = window.innerHeight;
-
-        console.log("width: ", width);
-        console.log("height: ", height);
+        let width = InitSetting.width;
+        let height = InitSetting.height;
 
         let myCanvas = sketch.createCanvas(width, height);
         myCanvas.parent('myContainer');
@@ -30,14 +25,13 @@ const s = (sketch) => {
 };
 let myp5 = new p5(s);
 
-
 document.addEventListener("click", (event) => {
 
     if (canStartDraw) {
         return;
     }
     let imgEl = document.getElementById("card");
-    let width = window.innerWidth;
+    let width = InitSetting.width;
     let halfWidth = width / 2;
     if (event.clientX < halfWidth) {
         imgEl.src = "./img/card.jpg";
@@ -46,16 +40,4 @@ document.addEventListener("click", (event) => {
     }
     canStartDraw = true;
 })
-
-
-
-
-console.log(init.width);
-console.log(init.height);
-
-
-
-
-
-
 
