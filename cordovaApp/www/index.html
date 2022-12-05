@@ -1,25 +1,26 @@
 <html>
 
 <head>
+  <link rel="stylesheet" href="css/reset.css">
   <style>
-    body {
-      padding: 0;
-      margin: 0;
-    }
-
+    
     #myContainer {
       position: absolute;
       top: 0px;
       left: 0px;
     }
 
-    /* 因body 沒設定好寬度與高度 所以用margin:auto 還不能置中 */
     #card {
       -webkit-user-select: none;
       -moz-user-select: none;
       -o-user-select: none;
       user-select: none;
-      margin: 50px;
+    }
+
+    body {
+      display: flex; /* ★ */
+      align-items: center; /* ★ */
+      justify-content: center;
     }
   </style>
   <script src="./lib/p5.min.js"></script>
@@ -29,6 +30,7 @@
 
 <body>
   <img id="card" width=200 src="./img/card.jpg">
+  
   <div id='myContainer'></div>
 </body>
 

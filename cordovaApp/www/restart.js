@@ -11,7 +11,7 @@ document.onmousedown = function () {
     setTimeout(()=>{
 
         if(typeof isMouseDownTime !== "undefined") {
-            console.log("模擬按很久的情況");
+            isMouseDownTime = undefined;
         }
 
     }, 5000);
