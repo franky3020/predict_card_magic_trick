@@ -1,28 +1,45 @@
 
+const magicControl = require("./MagicControl");
 
 
+$("#card").hide();
+$("#magicCloth").hide();
 
 
-
-let width = window.innerWidth;
-let height = window.innerHeight;
+$(document.body).css("background-color", "black");
 
 
-// document.body.style.width = '' + width + 'px';
-// document.body.style.height = '' + height + 'px';
+$("#startBtn").click(()=>{
+    $("#card").show();
+    $("#magicCloth").show();
+    $("#startBtn").hide();
 
-// console.log("document.body width, height");
-// console.log(width, height);
+    $(document.body).css("background-color", "white");
 
-module.exports = {
-    width,
-    height
+    setTimeout(()=>{
+        settingShowCard();
+    }, 1000);
+})
+
+function settingShowCard() {
+    
+    document.addEventListener("click", (event) => {
+
+        if (magicControl.isSettingDone) {
+            return;
+        }
+        let imgEl = document.getElementById("card");
+        let width = magicControl.width;
+        let halfWidth = width / 2;
+        if (event.clientX < halfWidth) {
+            imgEl.src = "./img/card.jpg";
+        } else {
+            imgEl.src = "./img/dog.jpg";
+        }
+        magicControl.canStartShow = true;
+        magicControl.isSettingDone = true;
+    })
 }
-
-
-
-
-
 
 
 

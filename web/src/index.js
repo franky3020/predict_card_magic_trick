@@ -1,43 +1,28 @@
-const InitSetting = require("./InitSetting");
-
-let canStartDraw = false;
+require("./InitSetting");
+const magicControl = require("./MagicControl");
 
 const s = (sketch) => {
 
     sketch.setup = () => {
 
-        let width = InitSetting.width;
-        let height = InitSetting.height;
+        let width = magicControl.width;
+        let height = magicControl.height;
 
-        let myCanvas = sketch.createCanvas(width, height);
-        myCanvas.parent('myContainer');
+        let magicCloth = sketch.createCanvas(width, height);
+        magicCloth.parent('magicCloth');
 
         sketch.background(0);
 
     };
 
     sketch.draw = () => {
-        if (canStartDraw && sketch.mouseIsPressed) {
+        if (magicControl.canStartShow && sketch.mouseIsPressed) {
             sketch.erase();
             sketch.ellipse(sketch.mouseX, sketch.mouseY, 80, 80);
         }
     };
 };
-let myp5 = new p5(s);
 
-document.addEventListener("click", (event) => {
+new p5(s);
 
-    if (canStartDraw) {
-        return;
-    }
-    let imgEl = document.getElementById("card");
-    let width = InitSetting.width;
-    let halfWidth = width / 2;
-    if (event.clientX < halfWidth) {
-        imgEl.src = "./img/card.jpg";
-    } else {
-        imgEl.src = "./img/dog.jpg";
-    }
-    canStartDraw = true;
-})
 
