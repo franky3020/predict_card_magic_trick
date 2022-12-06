@@ -1,17 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="./css/reset.css">
     <style>
         #myContainer {
             position: absolute;
             top: 0px;
             left: 0px;
+            bottom: 0px;
+            right: 0px;
         }
 
         #card {
@@ -25,18 +21,20 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            overflow-x:hidden;
+            overflow-y:hidden
         }
     </style>
 
     <script src="./lib/p5.min.js"></script>
-    <script src="./dist/bundle.js"></script>
+    
 </head>
 
 <body>
-
     <img id="card" width=200 src="./img/card.jpg">
     <div id='myContainer'></div>
-    
 </body>
+
+<script src="./dist/bundle.js"></script>
 
 </html>
