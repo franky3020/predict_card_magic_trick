@@ -9,7 +9,28 @@ class MagicControl {
 
         this.width = window.innerWidth;
         this.height = window.innerHeight;
+
+        this.cardNumber = undefined;
     }
+
+    chooseNumber(clientX) {
+        let oneThirdWidth = this.width / 3;
+        
+        if (clientX < oneThirdWidth) {
+            this.cardNumber = 11;
+        } else if (clientX > oneThirdWidth && clientX < oneThirdWidth * 2) {
+            this.cardNumber = 12;
+        } else {
+            this.cardNumber = 13;
+        }
+
+    }
+
+    chooseSuits() {
+
+    }
+    
+
 }
 
 module.exports = (()=>{

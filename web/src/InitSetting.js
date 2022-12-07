@@ -2,16 +2,14 @@
 const magicControl = require("./MagicControl");
 
 
-$("#card").hide();
-$("#magicCloth").hide();
+$("#magicArea").hide();
 
 
 $(document.body).css("background-color", "black");
 
 
 $("#startBtn").click(()=>{
-    $("#card").show();
-    $("#magicCloth").show();
+    $("#magicArea").show();
     $("#startBtn").hide();
 
     $(document.body).css("background-color", "white");
@@ -31,6 +29,9 @@ function settingShowCard() {
         let imgEl = document.getElementById("card");
         let width = magicControl.width;
         let halfWidth = width / 2;
+
+        magicControl.chooseNumber(event.clientX);
+
         if (event.clientX < halfWidth) {
             imgEl.src = "./img/card.jpg";
         } else {
@@ -38,6 +39,7 @@ function settingShowCard() {
         }
         magicControl.canStartShow = true;
         magicControl.isSettingDone = true;
+        console.log("magicControl.cardNumber: ", magicControl.cardNumber);
     })
 }
 
