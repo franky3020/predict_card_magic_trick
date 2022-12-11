@@ -1,5 +1,6 @@
 <html>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <head>
     <link rel="stylesheet" href="./css/reset.css">
     <style>
@@ -22,8 +23,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow-x:hidden;
-            overflow-y:hidden;
+            overflow-x: hidden;
+            overflow-y: hidden;
         }
 
         #startBtn {
@@ -34,18 +35,121 @@
             color: white;
         }
 
+        .menuBtn {
+            border-style: dashed;
+            border-width: 1px;
+            border-color: white;
+            font-size: 80px;
+            color: white;
+            padding: 1rem;
+            margin: 1rem;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 33% 33% 33%;
+        }
+
+
+        #showTip {
+            width: 100%;
+            height: 100%;
+        }
+
+        .item {
+            border-style: solid;
+            border-width: 2px;
+            border-color: gray;
+        }
+
+        .item img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
     </style>
 
     <script src="./lib/p5.min.js"></script>
     <script src="./lib/jquery-3.6.1.slim.min.js"></script>
-    
+
 </head>
 
 <body>
 
-    <div id="startBtn">
-        Start
+    <div id="menu">
+
+
+        <div id="startBtn" class="menuBtn">
+            Start
+        </div>
+
+        <div id="tipBtn" class="menuBtn">
+            Tip
+        </div>
+
     </div>
+
+    <div id="showTip">
+
+        <div class="container">
+
+            <div class="item">
+                <img src="./img/poker/sj_compressed.jpg">
+            </div>
+            <div class="item">
+                <img src="./img/poker/sq_compressed.jpg">
+            </div>
+            <div class="item">
+                <img src="./img/poker/sk_compressed.jpg">
+            </div>
+
+
+            <!-- heart -->
+            <div class="item">
+                <img src="./img/poker/hj_compressed.jpg">
+            </div>
+            <div class="item">
+                <img src="./img/poker/hq_compressed.jpg">
+            </div>
+            <div class="item">
+                <img src="./img/poker/hk_compressed.jpg">
+            </div>
+
+            <!-- diamond -->
+            <div class="item">
+                <img src="./img/poker/dj_compressed.jpg">
+            </div>
+            <div class="item">
+                <img src="./img/poker/dq_compressed.jpg">
+            </div>
+            <div class="item">
+                <img src="./img/poker/dk_compressed.jpg">
+            </div>
+
+
+            <!-- club -->
+            <div class="item">
+                <img src="./img/poker/cj_compressed.jpg">
+            </div>
+            <div class="item">
+                <img src="./img/poker/cq_compressed.jpg">
+            </div>
+            <div class="item">
+                <img src="./img/poker/ck_compressed.jpg">
+            </div>
+
+        </div>
+
+        <img id="goToMene"
+             src="./img/go-back.png" 
+             style="position: absolute;
+                    top: 10px;
+                    left: 10px;
+                    width: 50px;">
+
+    </div>
+
+
 
     <div id="magicArea">
         <img id="card">

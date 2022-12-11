@@ -3,18 +3,29 @@ const magicControl = require("./MagicControl");
 
 
 $("#magicArea").hide();
-
+$("#showTip").hide();
 
 $(document.body).css("background-color", "black");
 
 
 $("#startBtn").click(() => {
     $("#magicArea").show();
-    $("#startBtn").hide();
+    $("#menu").hide();
 
     setTimeout(() => {
         serCard();
     }, 100);
+})
+
+$("#tipBtn").click(() => {
+    $("#menu").hide();
+    $("#showTip").show();
+    $(".item").css("height", magicControl.height / 4 + 'px');
+})
+
+$("#goToMene").click(() => {
+    $("#menu").show();
+    $("#showTip").hide();
 })
 
 
