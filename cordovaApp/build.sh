@@ -7,6 +7,7 @@ rm -rf ./platforms
 
 rm -rf ./www
 cp -r ../web ./www
+rm -rf ./www/node_modules
 
 npx cordova prepare
 
