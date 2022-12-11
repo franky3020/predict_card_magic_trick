@@ -13,46 +13,28 @@ class MagicControl {
         this.cardSuit = undefined;
     }
 
-    chooseNumber(clientX) {
+    chooseCardV2(clientX, clientY) {
+
         let oneThirdWidth = this.width / 3;
         
         if (clientX < oneThirdWidth) {
             this.cardNumber = 11;
-        } else if (clientX > oneThirdWidth && clientX < oneThirdWidth * 2) {
+        } else if (clientX >= oneThirdWidth && clientX < oneThirdWidth * 2) {
             this.cardNumber = 12;
         } else {
             this.cardNumber = 13;
         }
 
-    }
 
-    chooseSuits(clientX, clientY) {
-
-        let halfWidth = this.width / 2 ;
-        let halfHeight = this.height / 2 ;
-
-        let isRight = false;
-        let isTop = false;
-
-        if(clientX > halfWidth) {
-            isRight = true;
-        } else {
-            isRight = false;
-        }
-
-        if(clientY > halfHeight) {
-            isTop = false;
-        } else {
-            isTop = true;
-        }
-
-        if(!isRight && isTop) {
+        let oneFourHeight = this.height / 4;
+        
+        if (clientY < oneFourHeight) {
             this.cardSuit = "spade";
-        } else if (isRight && isTop) {
+        } else if (clientY >= oneFourHeight && clientY < oneFourHeight * 2) {
             this.cardSuit = "heart";
-        } else if (!isRight && !isTop) {
+        } else if (clientY >= oneFourHeight * 2 && clientY < oneFourHeight * 3) {
             this.cardSuit = "diamond";
-        } else if (isRight && !isTop) {
+        } else {
             this.cardSuit = "club";
         }
 

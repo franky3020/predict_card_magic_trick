@@ -13,46 +13,24 @@ $("#startBtn").click(() => {
     $("#startBtn").hide();
 
     setTimeout(() => {
-        setCharNumber();
+        serCard();
     }, 100);
 })
 
 
-function setCharNumber() {
-
+function serCard() {
     document.addEventListener("touchstart", (event) => {
+
         if (typeof magicControl.cardNumber !== "undefined") {
             return;
         }
-        magicControl.chooseNumber(event.touches[0].clientX);
 
-    });
-
-    document.addEventListener("touchend", (event) => {
-        setCharSuit(); // 第一次設定完點數後, 才啟用設定花色
-    });
-
-}
-
-
-function setCharSuit() {
-    document.addEventListener("touchstart", (event) => {
-
-        if (typeof magicControl.cardSuit !== "undefined") {
-            return;
-        }
-
-        magicControl.chooseSuits(event.touches[0].clientX, event.touches[0].clientY);
-        console.log("cardSuit: ", magicControl.cardSuit);
+        magicControl.chooseCardV2(event.touches[0].clientX, event.touches[0].clientY);
         settingShowCard();
-    })
+    });
+    
 }
 
-
-        // spade
-        // heart
-        // diamond
-        // club
 function settingShowCard() {
 
     if (magicControl.isSettingDone) {
