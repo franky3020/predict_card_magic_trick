@@ -12,37 +12,60 @@ $("#startBtn").click(()=>{
     $("#magicArea").show();
     $("#startBtn").hide();
 
-    $(document.body).css("background-color", "white");
+    // $(document.body).css("background-color", "white");
 
     setTimeout(()=>{
-        settingShowCard();
+        setCharNumber();
     }, 1000);
 })
 
-function settingShowCard() {
-    
-    document.addEventListener("click", (event) => {
 
-        if (magicControl.isSettingDone) {
+function setCharNumber() {
+
+    document.addEventListener("touchstart", (event)=>{
+        if (typeof magicControl.cardNumber !== "undefined") {
             return;
         }
-        let imgEl = document.getElementById("card");
-        let width = magicControl.width;
-        let halfWidth = width / 2;
+        magicControl.chooseNumber(event.touches[0].clientX);
+        
+    });
 
-        magicControl.chooseNumber(event.clientX);
+    document.addEventListener("touchend", (event)=>{
+        setCharSuit(); // 第一次設定完點數後, 才啟用設定花色
+    });
 
-        if (event.clientX < halfWidth) {
-            imgEl.src = "./img/card.jpg";
-        } else {
-            imgEl.src = "./img/dog.jpg";
+}
+
+
+function setCharSuit() {
+    document.addEventListener("touchstart", (event) => {
+
+        if (typeof magicControl.cardSuit !== "undefined") {
+            return;
         }
-        magicControl.canStartShow = true;
-        magicControl.isSettingDone = true;
-        console.log("magicControl.cardNumber: ", magicControl.cardNumber);
+        
+        magicControl.chooseSuits(event.touches[0].clientX, event.touches[0].clientY);
+        console.log("cardSuit: ", magicControl.cardSuit);
+        settingShowCard();
     })
 }
 
 
+function settingShowCard() {
+
+    if (magicControl.isSettingDone) {
+        return;
+    }
+
+    
+    if(magicControl.cardNumber === 11) {
+        $("#card").attr("src", "./img/poker/SJ_compressed.jpg");
+    } else {
+        $("#card").attr("src", "./img/poker/SQ_compressed.jpg");
+    }
 
 
+    magicControl.canStartShow = true;
+    magicControl.isSettingDone = true;
+    
+}

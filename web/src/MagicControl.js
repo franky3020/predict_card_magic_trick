@@ -7,10 +7,10 @@ class MagicControl {
         this.canStartShow = false;
         this.isSettingDone = false;
 
-        this.width = window.innerWidth;
-        this.height = window.innerHeight;
-
+        this.width = window.outerWidth;
+        this.height = window.outerHeight;
         this.cardNumber = undefined;
+        this.cardSuit = undefined;
     }
 
     chooseNumber(clientX) {
@@ -26,7 +26,35 @@ class MagicControl {
 
     }
 
-    chooseSuits() {
+    chooseSuits(clientX, clientY) {
+
+        let halfWidth = this.width / 2 ;
+        let halfHeight = this.height / 2 ;
+
+        let isRight = false;
+        let isTop = false;
+
+        if(clientX > halfWidth) {
+            isRight = true;
+        } else {
+            isRight = false;
+        }
+
+        if(clientY > halfHeight) {
+            isTop = false;
+        } else {
+            isTop = true;
+        }
+
+        if(!isRight && isTop) {
+            this.cardSuit = "spade";
+        } else if (isRight && isTop) {
+            this.cardSuit = "heart ";
+        } else if (!isRight && !isTop) {
+            this.cardSuit = "diamond";
+        } else if (isRight && !isTop) {
+            this.cardSuit = "club";
+        }
 
     }
     

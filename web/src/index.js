@@ -8,6 +8,7 @@ const s = (sketch) => {
         let width = magicControl.width;
         let height = magicControl.height;
 
+        console.log("p5 width, height", width, height);
         let magicCloth = sketch.createCanvas(width, height);
         magicCloth.parent('magicCloth');
 
