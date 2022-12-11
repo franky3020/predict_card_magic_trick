@@ -49,7 +49,7 @@ class MagicControl {
         if(!isRight && isTop) {
             this.cardSuit = "spade";
         } else if (isRight && isTop) {
-            this.cardSuit = "heart ";
+            this.cardSuit = "heart";
         } else if (!isRight && !isTop) {
             this.cardSuit = "diamond";
         } else if (isRight && !isTop) {
