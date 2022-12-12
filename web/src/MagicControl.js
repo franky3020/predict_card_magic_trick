@@ -6,6 +6,7 @@ class MagicControl {
     constructor() {
         this.canStartShow = false;
         this.isSettingDone = false;
+        this.doRestart = false;
 
         this.width = window.outerWidth;
         this.height = window.outerHeight;

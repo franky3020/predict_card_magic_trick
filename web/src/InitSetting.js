@@ -13,7 +13,7 @@ $("#startBtn").click(() => {
     $("#menu").hide();
 
     setTimeout(() => {
-        serCard();
+        setCard();
     }, 100);
 })
 
@@ -29,7 +29,9 @@ $("#goToMene").click(() => {
 })
 
 
-function serCard() {
+
+
+function setCard() {
     document.addEventListener("touchstart", (event) => {
 
         if (typeof magicControl.cardNumber !== "undefined") {
@@ -96,5 +98,18 @@ function settingShowCard() {
 
     magicControl.canStartShow = true;
     magicControl.isSettingDone = true;
+    
+}
+
+backToMenu();
+function backToMenu() {
+    document.addEventListener("touchstart", (event) => {
+
+        if(event.touches.length === 2) {
+            magicControl.doRestart = true;
+        }
+        
+
+    });
     
 }
