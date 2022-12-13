@@ -1,4 +1,3 @@
-
 const magicControl = require("./MagicControl");
 
 
@@ -33,11 +32,9 @@ $("#goToMene").click(() => {
 
 function setCard() {
     document.addEventListener("touchstart", (event) => {
-
         if (typeof magicControl.cardNumber !== "undefined") {
             return;
         }
-
         magicControl.chooseCardV2(event.touches[0].clientX, event.touches[0].clientY);
         settingShowCard();
     });
@@ -101,15 +98,23 @@ function settingShowCard() {
     
 }
 
-backToMenu();
-function backToMenu() {
-    document.addEventListener("touchstart", (event) => {
+setInterval(()=>{
+    backToMenu();
+}, 5000)
 
-        if(event.touches.length === 2) {
-            magicControl.doRestart = true;
-        }
+function backToMenu() {
+
+
+    location.reload();
+    // document.addEventListener("touchstart", (event) => {
+
+    //     console.log("backToMenu touchstart", event.touches);
+
+    //     if(event.touches.length === 2) {
+    //         magicControl.doRestart = true;
+    //     }
         
 
-    });
+    // });
     
 }

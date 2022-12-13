@@ -1,8 +1,6 @@
 require("./InitSetting");
 const magicControl = require("./MagicControl");
 
-let resetFlag = false;
-
 const s = (sketch) => {
 
     sketch.setup = () => {
@@ -21,10 +19,6 @@ const s = (sketch) => {
         if (magicControl.canStartShow && sketch.mouseIsPressed) {
             sketch.erase();
             sketch.ellipse(sketch.mouseX, sketch.mouseY, 80, 80);
-        }
-        if(magicControl.doRestart) {
-            sketch.background(0);
-            magicControl.doRestart = false;
         }
     };
 };
