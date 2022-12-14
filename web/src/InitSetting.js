@@ -101,7 +101,7 @@ function settingShowCard() {
 
 
 let keepTouchTwoFingerTimer = undefined;
-
+const keppTouchReloadTime = 4 * 1000;
 
 function backToMenu() {
 
@@ -115,7 +115,7 @@ function backToMenu() {
 
             keepTouchTwoFingerTimer = setTimeout(()=>{
                 location.reload();
-            }, 5000);
+            }, keppTouchReloadTime);
         }
     });
 
