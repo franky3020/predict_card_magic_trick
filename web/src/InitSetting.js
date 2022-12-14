@@ -37,6 +37,7 @@ function setCard() {
         }
         magicControl.chooseCardV2(event.touches[0].clientX, event.touches[0].clientY);
         settingShowCard();
+        backToMenu();
     });
     
 }
@@ -98,23 +99,31 @@ function settingShowCard() {
     
 }
 
-setInterval(()=>{
-    backToMenu();
-}, 5000)
+
+let keepTouchTwoFingerTimer = undefined;
+
 
 function backToMenu() {
 
+    
+    document.addEventListener("touchstart", (event) => {
+        if(event.touches.length === 2) {
 
-    location.reload();
-    // document.addEventListener("touchstart", (event) => {
+            if(typeof keepTouchTwoFingerTimer !=="undefined") {
+                clearTimeout(keepTouchTwoFingerTimer);
+            }
 
-    //     console.log("backToMenu touchstart", event.touches);
+            keepTouchTwoFingerTimer = setTimeout(()=>{
+                location.reload();
+            }, 5000);
+        }
+    });
 
-    //     if(event.touches.length === 2) {
-    //         magicControl.doRestart = true;
-    //     }
-        
+    document.addEventListener("touchend", () => {
+        if(typeof keepTouchTwoFingerTimer !=="undefined") {
+            clearTimeout(keepTouchTwoFingerTimer);
+        }
 
-    // });
+    });
     
 }
