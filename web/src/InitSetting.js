@@ -1,4 +1,3 @@
-
 const magicControl = require("./MagicControl");
 
 
@@ -13,7 +12,7 @@ $("#startBtn").click(() => {
     $("#menu").hide();
 
     setTimeout(() => {
-        serCard();
+        setCard();
     }, 100);
 })
 
@@ -29,15 +28,16 @@ $("#goToMene").click(() => {
 })
 
 
-function serCard() {
-    document.addEventListener("touchstart", (event) => {
 
+
+function setCard() {
+    document.addEventListener("touchstart", (event) => {
         if (typeof magicControl.cardNumber !== "undefined") {
             return;
         }
-
         magicControl.chooseCardV2(event.touches[0].clientX, event.touches[0].clientY);
         settingShowCard();
+        backToMenu();
     });
     
 }
@@ -96,5 +96,34 @@ function settingShowCard() {
 
     magicControl.canStartShow = true;
     magicControl.isSettingDone = true;
+    
+}
+
+
+let keepTouchTwoFingerTimer = undefined;
+const keppTouchReloadTime = 4 * 1000;
+
+function backToMenu() {
+
+    
+    document.addEventListener("touchstart", (event) => {
+        if(event.touches.length === 2) {
+
+            if(typeof keepTouchTwoFingerTimer !=="undefined") {
+                clearTimeout(keepTouchTwoFingerTimer);
+            }
+
+            keepTouchTwoFingerTimer = setTimeout(()=>{
+                location.reload();
+            }, keppTouchReloadTime);
+        }
+    });
+
+    document.addEventListener("touchend", () => {
+        if(typeof keepTouchTwoFingerTimer !=="undefined") {
+            clearTimeout(keepTouchTwoFingerTimer);
+        }
+
+    });
     
 }

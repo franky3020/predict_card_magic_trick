@@ -25,4 +25,3 @@ const s = (sketch) => {
 
 new p5(s);
 
-
