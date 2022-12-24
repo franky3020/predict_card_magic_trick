@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@angular/cli": "^15.0.4",
     "cordova": "^11.0.0"
   }
 }

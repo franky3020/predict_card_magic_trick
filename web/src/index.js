@@ -9,11 +9,13 @@ if (typeof screen.orientation.lock !== "undefined") {
     while (1) {
         console.log('Orientation is:' + screen.orientation.type.toString());
         if (screen.orientation.type.toString() !== 'portrait-primary') {
-            await sleep(100);
+            await sleep(500);
         } else {
             break;
         }
     }
+    // 防止剛轉完 系統還未更新寬高的情況
+    await sleep(500);
 
 
     require("./InitSetting");
