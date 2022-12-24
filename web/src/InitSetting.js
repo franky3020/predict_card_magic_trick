@@ -1,6 +1,6 @@
 const magicControl = require("./MagicControl");
 
-
+console.log('debug test run here');
 $("#magicArea").hide();
 $("#showTip").hide();
 
@@ -28,8 +28,6 @@ $("#goToMene").click(() => {
 })
 
 
-
-
 function setCard() {
     document.addEventListener("touchstart", (event) => {
         if (typeof magicControl.cardNumber !== "undefined") {
@@ -39,7 +37,7 @@ function setCard() {
         settingShowCard();
         backToMenu();
     });
-    
+
 }
 
 function settingShowCard() {
@@ -54,13 +52,13 @@ function settingShowCard() {
 
 
     console.log("magicControl.cardSuit", magicControl.cardSuit);
-    if(magicControl.cardNumber === 11) {
+    if (magicControl.cardNumber === 11) {
 
-        if(magicControl.cardSuit === "spade") {
+        if (magicControl.cardSuit === "spade") {
             $("#card").attr("src", "./img/poker/sj_compressed.jpg");
-        } else if(magicControl.cardSuit === "heart") {
+        } else if (magicControl.cardSuit === "heart") {
             $("#card").attr("src", "./img/poker/hj_compressed.jpg");
-        } else if(magicControl.cardSuit === "diamond") {
+        } else if (magicControl.cardSuit === "diamond") {
             $("#card").attr("src", "./img/poker/dj_compressed.jpg");
         } else { // club
             $("#card").attr("src", "./img/poker/cj_compressed.jpg");
@@ -68,11 +66,11 @@ function settingShowCard() {
     } else if (magicControl.cardNumber === 12) {
 
 
-        if(magicControl.cardSuit === "spade") {
+        if (magicControl.cardSuit === "spade") {
             $("#card").attr("src", "./img/poker/sq_compressed.jpg");
-        } else if(magicControl.cardSuit === "heart") {
+        } else if (magicControl.cardSuit === "heart") {
             $("#card").attr("src", "./img/poker/hq_compressed.jpg");
-        } else if(magicControl.cardSuit === "diamond") {
+        } else if (magicControl.cardSuit === "diamond") {
             $("#card").attr("src", "./img/poker/dq_compressed.jpg");
         } else { // club
             $("#card").attr("src", "./img/poker/cq_compressed.jpg");
@@ -81,11 +79,11 @@ function settingShowCard() {
 
     } else { // magicControl.cardNumber === 13
 
-        if(magicControl.cardSuit === "spade") {
+        if (magicControl.cardSuit === "spade") {
             $("#card").attr("src", "./img/poker/sk_compressed.jpg");
-        } else if(magicControl.cardSuit === "heart") {
+        } else if (magicControl.cardSuit === "heart") {
             $("#card").attr("src", "./img/poker/hk_compressed.jpg");
-        } else if(magicControl.cardSuit === "diamond") {
+        } else if (magicControl.cardSuit === "diamond") {
             $("#card").attr("src", "./img/poker/dk_compressed.jpg");
         } else { // club
             $("#card").attr("src", "./img/poker/ck_compressed.jpg");
@@ -96,7 +94,7 @@ function settingShowCard() {
 
     magicControl.canStartShow = true;
     magicControl.isSettingDone = true;
-    
+
 }
 
 
@@ -105,25 +103,25 @@ const keppTouchReloadTime = 2.5 * 1000;
 
 function backToMenu() {
 
-    
-    document.addEventListener("touchstart", (event) => {
-        if(event.touches.length === 2) {
 
-            if(typeof keepTouchTwoFingerTimer !=="undefined") {
+    document.addEventListener("touchstart", (event) => {
+        if (event.touches.length === 2) {
+
+            if (typeof keepTouchTwoFingerTimer !== "undefined") {
                 clearTimeout(keepTouchTwoFingerTimer);
             }
 
-            keepTouchTwoFingerTimer = setTimeout(()=>{
+            keepTouchTwoFingerTimer = setTimeout(() => {
                 location.reload();
             }, keppTouchReloadTime);
         }
     });
 
     document.addEventListener("touchend", () => {
-        if(typeof keepTouchTwoFingerTimer !=="undefined") {
+        if (typeof keepTouchTwoFingerTimer !== "undefined") {
             clearTimeout(keepTouchTwoFingerTimer);
         }
 
     });
-    
+
 }

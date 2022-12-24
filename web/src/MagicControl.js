@@ -4,6 +4,7 @@ let instance;
 
 class MagicControl {
     constructor() {
+        console.log("MagicControl constructor()");
         this.canStartShow = false;
         this.isSettingDone = false;
 

@@ -1,27 +1,62 @@
-require("./InitSetting");
-const magicControl = require("./MagicControl");
 
-const s = (sketch) => {
 
-    sketch.setup = () => {
+if (typeof screen.orientation.lock !== "undefined") {
+    screen.orientation.lock('portrait-primary');
+    console.log('after screen.orientation.lock ' + screen.orientation.type);
+}
 
-        let width = magicControl.width;
-        let height = magicControl.height;
-
-        let magicCloth = sketch.createCanvas(width, height);
-        magicCloth.parent('magicCloth');
-
-        sketch.background(0);
-
-    };
-
-    sketch.draw = () => {
-        if (magicControl.canStartShow && sketch.mouseIsPressed) {
-            sketch.erase();
-            sketch.ellipse(sketch.mouseX, sketch.mouseY, 80, 80);
+(async function () {
+    while (1) {
+        console.log('Orientation is:' + screen.orientation.type.toString());
+        if (screen.orientation.type.toString() !== 'portrait-primary') {
+            await sleep(100);
+        } else {
+            break;
         }
-    };
-};
+    }
 
-new p5(s);
+
+    require("./InitSetting");
+    const magicControl = require("./MagicControl");
+
+    const s = (sketch) => {
+
+        sketch.setup = () => {
+
+            let width = magicControl.width;
+            let height = magicControl.height;
+
+            let magicCloth = sketch.createCanvas(width, height);
+            magicCloth.parent('magicCloth');
+
+            sketch.background(0);
+
+        };
+
+        sketch.draw = () => {
+            if (magicControl.canStartShow && sketch.mouseIsPressed) {
+                sketch.erase();
+                sketch.ellipse(sketch.mouseX, sketch.mouseY, 80, 80);
+            }
+        };
+    };
+
+    new p5(s);
+
+
+}());
+
+
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+
+
+
+
+
+
+
 

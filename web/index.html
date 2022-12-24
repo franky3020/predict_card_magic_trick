@@ -140,9 +140,7 @@
 
         </div>
 
-        <img id="goToMene"
-             src="./img/go-back.png" 
-             style="position: absolute;
+        <img id="goToMene" src="./img/go-back.png" style="position: absolute;
                     top: 10px;
                     left: 10px;
                     width: 50px;">
@@ -156,7 +154,19 @@
         <div id='magicCloth'></div>
     </div>
 </body>
+<script type="text/javascript" src="cordova.js"></script>
 
-<script src="./dist/bundle.js"></script>
+<script type="module">
+
+    document.addEventListener("deviceready", onDeviceReady, false);
+    function onDeviceReady() {
+        import('./dist/bundle.js');
+    }
+
+    // onDeviceReady();
+
+
+
+</script>
 
 </html>

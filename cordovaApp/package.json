@@ -19,9 +19,13 @@
     "platforms": [
       "android"
     ],
-    "plugins": {}
+    "plugins": {
+      "cordova-plugin-screen-orientation": {}
+    }
   },
   "devDependencies": {
-    "cordova-android": "11.0.0"
+    "cordova-android": "^11.0.0",
+    "cordova-plugin-screen-orientation": "^3.0.2",
+    "es6-promise-plugin": "^4.2.2"
   }
 }
