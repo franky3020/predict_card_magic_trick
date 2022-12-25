@@ -1,17 +1,23 @@
 
 
+<div class="home-page d-flex justify-content-center align-items-center">
+
 <div *ngIf="!isAfterOrientationLock" class="spinner-border position-absolute top-50 start-50" role="status">
     <span class="visually-hidden">Loading...</span>
 </div>
 
-<div *ngIf="isAfterOrientationLock" class="position-absolute top-50 start-50 translate-middle d-flex flex-column">
+<!-- <div *ngIf="isAfterOrientationLock" class="position-absolute top-50 start-50 translate-middle d-flex flex-column"> -->
+<div *ngIf="isAfterOrientationLock" class="d-flex flex-column ">
 
-    <button type="button" class="btn btn-primary m-3 p-3 fs-1"  routerLink="/magic-page" >Start</button>
+    <button type="button" class="btn btn-dark m-3 p-3 fs-1"  routerLink="/magic-page" >Start</button>
 
     <p *ngIf="isNotPortraitPrimary" class="bg-warning">Warning: Please let phone be vertical and restart this App</p>
 
-    <button type="button" class="btn btn-primary m-3 p-3 fs-1"  routerLink="/tip-page" >Tip</button>
+    <button type="button" class="btn btn-dark m-3 p-3 fs-1"  routerLink="/tip-page" >Tip</button>
 
-    <button type="button" class="btn btn-primary m-3 p-3 fs-1"  routerLink="/learn-page" >Learn</button>
+    <button type="button" class="btn btn-dark m-3 p-3 fs-1"  routerLink="/learn-page" >Learn</button>
+
+</div>
+
 
 </div>
