@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class TipPageComponent {
 
+  cardHeight = (window.outerHeight / 4) + 'px';
+
+
+
 }

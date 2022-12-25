@@ -1,5 +1,53 @@
-<p>tip-page works!</p>
-<button type="button" class="btn btn-primary"  routerLink="/home-page" >home-page</button>
-<div id="magicArea">
-    <div id='magicCloth'></div>
+<div class="tip-page">
+    <div class="card" [style.height]="cardHeight">
+        <img src="assets/cards/sj_compressed.jpg">
+    </div>
+    <div class="card" [style.height]="cardHeight">
+        <img src="assets/cards/sq_compressed.jpg">
+    </div>
+    <div class="card" [style.height]="cardHeight">
+        <img src="assets/cards/sk_compressed.jpg">
+    </div>
+
+
+    <!-- heart -->
+    <div class="card" [style.height]="cardHeight">
+        <img src="assets/cards/hj_compressed.jpg">
+    </div>
+    <div class="card" [style.height]="cardHeight">
+        <img src="assets/cards/hq_compressed.jpg">
+    </div>
+    <div class="card" [style.height]="cardHeight">
+        <img src="assets/cards/hk_compressed.jpg">
+    </div>
+
+    <!-- diamond -->
+    <div class="card" [style.height]="cardHeight">
+        <img src="assets/cards/dj_compressed.jpg">
+    </div>
+    <div class="card" [style.height]="cardHeight">
+        <img src="assets/cards/dq_compressed.jpg">
+    </div>
+    <div class="card" [style.height]="cardHeight">
+        <img src="assets/cards/dk_compressed.jpg">
+    </div>
+
+
+    <!-- club -->
+    <div class="card" [style.height]="cardHeight">
+        <img src="assets/cards/cj_compressed.jpg">
+    </div>
+    <div class="card" [style.height]="cardHeight">
+        <img src="assets/cards/cq_compressed.jpg">
+    </div>
+    <div class="card" [style.height]="cardHeight">
+        <img src="assets/cards/ck_compressed.jpg">
+    </div>
+
+
+    <img routerLink="/home-page" src="assets/go-back.png" style="position: absolute;
+       top: 10px;
+       left: 10px;
+       width: 50px;">
+
 </div>
