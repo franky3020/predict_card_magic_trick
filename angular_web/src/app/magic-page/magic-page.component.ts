@@ -17,6 +17,9 @@ export class MagicPageComponent {
 
   selfSetCard: any;
 
+  cardImgPath = '';
+  cardWidth = 0;
+
   constructor() {
     this.magicControl = new MagicControl(this.width, this.height);
     this.selfSetCard = this.setCard.bind(this);
@@ -53,7 +56,7 @@ export class MagicPageComponent {
     document.addEventListener("touchstart", this.selfSetCard);
   }
 
-  setCard(event: any) {
+  setCard(event: TouchEvent) {
 
     console.log("run setCard() touchstart Event");
 
@@ -63,8 +66,64 @@ export class MagicPageComponent {
     this.magicControl.chooseCardV2(event.touches[0].clientX, event.touches[0].clientY);
     console.log("card number", this.magicControl.cardNumber);
     console.log("card cardSuit", this.magicControl.cardSuit);
+
+
+
+
+    this.cardWidth = 200;
+    if (typeof this.magicControl.cardNumber !== "undefined" &&
+        typeof this.magicControl.cardSuit !== "undefined") {
+ 
+      this.setCardImgPath(this.magicControl.cardNumber, this.magicControl.cardSuit);
+    }
+
+
     this.canStartShow = true;
   }
+
+  setCardImgPath(cardNumber: number, cardSuit: string) {
+
+    if (cardNumber === 11) {
+
+      if (cardSuit === "spade") {
+        this.cardImgPath = "assets/cards/sj_compressed.jpg";
+      } else if (cardSuit === "heart") {
+        this.cardImgPath = "assets/cards/hj_compressed.jpg";
+      } else if (cardSuit === "diamond") {
+        this.cardImgPath = "assets/cards/dj_compressed.jpg";
+      } else { // club
+        this.cardImgPath = "assets/cards/cj_compressed.jpg";
+      }
+    } else if (cardNumber === 12) {
+
+
+      if (cardSuit === "spade") {
+        this.cardImgPath = "assets/cards/sq_compressed.jpg";
+      } else if (cardSuit === "heart") {
+        this.cardImgPath = "assets/cards/hq_compressed.jpg";
+      } else if (cardSuit === "diamond") {
+        this.cardImgPath = "assets/cards/dq_compressed.jpg";
+      } else { // club
+        this.cardImgPath = "assets/cards/cq_compressed.jpg";
+      }
+
+
+    } else { // cardNumber === 13
+
+      if (cardSuit === "spade") {
+        this.cardImgPath = "assets/cards/sk_compressed.jpg";
+      } else if (cardSuit === "heart") {
+        this.cardImgPath = "assets/cards/hk_compressed.jpg";
+      } else if (cardSuit === "diamond") {
+        this.cardImgPath = "assets/cards/dk_compressed.jpg";
+      } else { // club
+        this.cardImgPath = "assets/cards/ck_compressed.jpg";
+      }
+
+    }
+  }
+
+
 
   ngOnDestroy() {
     console.log("MagicPageComponent ngOnDestroy");
