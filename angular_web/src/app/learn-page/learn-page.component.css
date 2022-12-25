@@ -6,6 +6,17 @@
     animation: watch-me 3.5s ease-in-out infinite alternate;
 }
 
+#backIconAtBottom {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+   
+    width: 50px;
+    animation: watch-me 3.5s ease-in-out infinite alternate;
+}
+
+
+
 @keyframes watch-me {
 
     0%,
