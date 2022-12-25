@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { TipPageComponent } from './tip-page/tip-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { MagicPageComponent } from './magic-page/magic-page.component';
+import { LearnPageComponent } from './learn-page/learn-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TipPageComponent,
     HomePageComponent,
-    MagicPageComponent
+    MagicPageComponent,
+    LearnPageComponent
   ],
   imports: [
     BrowserModule,

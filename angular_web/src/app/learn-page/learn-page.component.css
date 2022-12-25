@@ -1,0 +1,20 @@
+#backIcon {
+    margin-top: 10px;
+    margin-left: 10px;
+   
+    width: 50px;
+    animation: watch-me 3.5s ease-in-out infinite alternate;
+}
+
+@keyframes watch-me {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.75;
+    }
+}
+

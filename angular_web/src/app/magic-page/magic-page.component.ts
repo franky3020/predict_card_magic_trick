@@ -142,8 +142,8 @@ export class MagicPageComponent {
     } else {
       this.cardHeight = this.height * 0.9 + 'px';
     }
-  }
 
+  }
 
 
   ngOnDestroy() {
@@ -173,6 +173,7 @@ export class MagicPageComponent {
         console.log("test backToHomePage");
         this.router.navigate(['']);
       }, this.keppTouchReloadTime);
+
     }
   }
 
@@ -181,6 +182,5 @@ export class MagicPageComponent {
       clearTimeout(this.keepTouchTwoFingerTimer);
     }
   }
-
 
 }
