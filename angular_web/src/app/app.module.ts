@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TipPageComponent } from './tip-page/tip-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { MagicPageComponent } from './magic-page/magic-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TipPageComponent,
-    HomePageComponent
+    HomePageComponent,
+    MagicPageComponent
   ],
   imports: [
     BrowserModule,
