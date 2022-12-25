@@ -1,4 +1,10 @@
-<p>home-page works!</p>
 
-<button type="button" class="btn btn-primary"  routerLink="/magic-page" >magic-page</button>
-<button type="button" class="btn btn-primary"  routerLink="/tip-page" >tip-page</button>
+
+<div *ngIf="!isAfterOrientationLock" class="spinner-border position-absolute top-50 start-50" role="status">
+    <span class="visually-hidden">Loading...</span>
+</div>
+
+<div *ngIf="isAfterOrientationLock" class="position-absolute top-50 start-50 translate-middle d-flex flex-column">
+    <button type="button" class="btn btn-primary m-3 p-3 fs-1"  routerLink="/magic-page" >Start</button>
+    <button type="button" class="btn btn-primary m-3 p-3 fs-1"  routerLink="/tip-page" >tip</button>
+</div>

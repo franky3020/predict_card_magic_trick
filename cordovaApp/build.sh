@@ -8,6 +8,10 @@ rm -rf ./plugins
 
 rm -rf ./www
 
+cd ../angular_web
+npm run build
+
+cd ../cordovaApp
 ## 改成angular
 cp -r ../angular_web/dist/angular_web ./www
 
