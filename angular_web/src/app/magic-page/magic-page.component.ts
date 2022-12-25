@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import * as p5 from 'p5';
 import { MagicControl } from "../MagicControl";
 
@@ -16,14 +17,21 @@ export class MagicPageComponent {
   canStartShow = false;
 
   selfSetCard: any;
+  selfBackToHomePage: any;
+  selfClearKeepTouchTwoFingerTimer: any;
 
   cardImgPath = '';
   cardWidth = '';
   cardHeight = '';
 
-  constructor() {
+  keepTouchTwoFingerTimer: NodeJS.Timeout| undefined = undefined;
+  keppTouchReloadTime = 2500;
+
+  constructor(private router: Router) {
     this.magicControl = new MagicControl(this.width, this.height);
     this.selfSetCard = this.setCard.bind(this);
+    this.selfBackToHomePage = this.backToHomePage.bind(this);
+    this.selfClearKeepTouchTwoFingerTimer = this.clearKeepTouchTwoFingerTimer.bind(this);
   }
 
 
@@ -51,6 +59,8 @@ export class MagicPageComponent {
     new p5(s);
 
     this.addSetCradEvent();
+    this.addBackToHomePageEvent();
+
   }
 
   addSetCradEvent() {
@@ -69,20 +79,17 @@ export class MagicPageComponent {
     console.log("card cardSuit", this.magicControl.cardSuit);
 
 
-
-
-    
     this.setCardWidth();
 
     if (typeof this.magicControl.cardNumber !== "undefined" &&
-        typeof this.magicControl.cardSuit !== "undefined") {
- 
+      typeof this.magicControl.cardSuit !== "undefined") {
+
       this.setCardImgPath(this.magicControl.cardNumber, this.magicControl.cardSuit);
       this.canStartShow = true;
     }
 
 
-    
+
   }
 
   setCardImgPath(cardNumber: number, cardSuit: string) {
@@ -130,7 +137,7 @@ export class MagicPageComponent {
   // 防止過扁的手機 讓圖片太大
   setCardWidth() {
 
-    if(this.height / this.width > 1.4) {
+    if (this.height / this.width > 1.4) {
       this.cardWidth = this.width * 0.9 + 'px';
     } else {
       this.cardHeight = this.height * 0.9 + 'px';
@@ -142,6 +149,38 @@ export class MagicPageComponent {
   ngOnDestroy() {
     console.log("MagicPageComponent ngOnDestroy");
     document.removeEventListener("touchstart", this.selfSetCard);
+    this.removeBackToHomePageEvent();
   }
+
+  addBackToHomePageEvent() {
+    document.addEventListener("touchstart", this.selfBackToHomePage);
+    document.addEventListener("touchend", this.selfClearKeepTouchTwoFingerTimer);
+  }
+
+  removeBackToHomePageEvent() {
+    document.removeEventListener("touchstart", this.selfBackToHomePage);
+    document.removeEventListener("touchend", this.selfClearKeepTouchTwoFingerTimer);
+  }
+
+  backToHomePage(event: TouchEvent) {
+    if (event.touches.length === 2) { // TODO: 改成2
+
+      if (typeof this.keepTouchTwoFingerTimer !== "undefined") {
+        clearTimeout(this.keepTouchTwoFingerTimer);
+      }
+
+      this.keepTouchTwoFingerTimer = setTimeout(() => {
+        console.log("test backToHomePage");
+        this.router.navigate(['']);
+      }, this.keppTouchReloadTime);
+    }
+  }
+
+  clearKeepTouchTwoFingerTimer() {
+    if (typeof this.keepTouchTwoFingerTimer !== "undefined") {
+      clearTimeout(this.keepTouchTwoFingerTimer);
+    }
+  }
+
 
 }
