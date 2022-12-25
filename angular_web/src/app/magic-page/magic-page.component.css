@@ -1,13 +1,14 @@
 .magic-page {
     overflow-x: hidden;
     overflow-y: hidden;
+    background-color: black;
 }
 
 
 #magicCloth {
     position: fixed;
     top: 0px;
-    /* left: 0px;
+    left: 0px;
     bottom: 0px;
-    right: 0px; */
+    right: 0px;
 }

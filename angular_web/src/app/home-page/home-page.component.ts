@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class HomePageComponent {
 
   isAfterOrientationLock = false;
+  isNotPortraitPrimary = true;
 
   constructor() {
     document.addEventListener("deviceready", this.orientationLock, false);
@@ -16,19 +17,21 @@ export class HomePageComponent {
   async ngOnInit() {
 
     console.log('wait Orientation lock');
-    while (1) {
-      console.log('Orientation is:' + screen.orientation.type.toString());
-      if (screen.orientation.type.toString() !== 'portrait-primary') {
+    for(let i = 0 ; i < 10 ; i++) {
+      console.log('Orientation is:' + window.screen.orientation.type.toString());
+      if (window.screen.orientation.type.toString() !== 'portrait-primary') {
         await this.sleep(100);
       } else {
-        this.isAfterOrientationLock = true;
+        this.isNotPortraitPrimary = false;
         break;
       }
     }
+
+    this.isAfterOrientationLock = true;
   }
 
   orientationLock() {
-    console.log('screen.orientation.lock is ', screen.orientation.lock);
+    console.log('screen.orientation.lock is ', window.screen.orientation.lock);
 
     if (typeof window.screen.orientation.lock !== "undefined") {
       window.screen.orientation.lock('portrait-primary');

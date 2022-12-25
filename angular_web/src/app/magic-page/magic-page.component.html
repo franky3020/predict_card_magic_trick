@@ -1,8 +1,13 @@
 
 <div class="magic-page" [style.height]="height + 'px'">
-    <div id="magicArea">
-        <img id="card" [attr.src]="cardImgPath" [style.width]="cardWidth + 'px'">
-        <div id='magicCloth'></div>
-    </div>
+
+
+    <img id="card" class="position-absolute top-50 start-50 translate-middle" 
+         [attr.src]="cardImgPath" 
+         [style.width]="cardWidth"
+         [style.height]="cardHeight">
+
+    <div id='magicCloth'></div>
+
 </div>
 

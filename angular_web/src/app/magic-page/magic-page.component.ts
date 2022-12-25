@@ -18,7 +18,8 @@ export class MagicPageComponent {
   selfSetCard: any;
 
   cardImgPath = '';
-  cardWidth = 0;
+  cardWidth = '';
+  cardHeight = '';
 
   constructor() {
     this.magicControl = new MagicControl(this.width, this.height);
@@ -70,15 +71,18 @@ export class MagicPageComponent {
 
 
 
-    this.cardWidth = 200;
+    
+    this.setCardWidth();
+
     if (typeof this.magicControl.cardNumber !== "undefined" &&
         typeof this.magicControl.cardSuit !== "undefined") {
  
       this.setCardImgPath(this.magicControl.cardNumber, this.magicControl.cardSuit);
+      this.canStartShow = true;
     }
 
 
-    this.canStartShow = true;
+    
   }
 
   setCardImgPath(cardNumber: number, cardSuit: string) {
@@ -120,6 +124,16 @@ export class MagicPageComponent {
         this.cardImgPath = "assets/cards/ck_compressed.jpg";
       }
 
+    }
+  }
+
+  // 防止過扁的手機 讓圖片太大
+  setCardWidth() {
+
+    if(this.height / this.width > 1.4) {
+      this.cardWidth = this.width * 0.9 + 'px';
+    } else {
+      this.cardHeight = this.height * 0.9 + 'px';
     }
   }
 
