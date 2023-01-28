@@ -36,7 +36,7 @@ export class MagicPageComponent {
 
 
   ngOnInit() {
-    console.log("width, height", this.width, this.height);
+    // console.log("width, height", this.width, this.height);
     const s = (sketch: any) => {
 
       sketch.setup = () => {
@@ -45,12 +45,11 @@ export class MagicPageComponent {
         magicCloth.parent('magicCloth');
 
         sketch.background(0);
-
+        sketch.erase();
       };
 
       sketch.draw = () => {
         if (this.canStartShow && sketch.mouseIsPressed) {
-          sketch.erase();
           sketch.ellipse(sketch.mouseX, sketch.mouseY, 80, 80);
         }
       };
@@ -69,14 +68,12 @@ export class MagicPageComponent {
 
   setCard(event: TouchEvent) {
 
-    console.log("run setCard() touchstart Event");
-
     if (typeof this.magicControl.cardNumber !== "undefined") {
       return;
     }
     this.magicControl.chooseCardV2(event.touches[0].clientX, event.touches[0].clientY);
-    console.log("card number", this.magicControl.cardNumber);
-    console.log("card cardSuit", this.magicControl.cardSuit);
+    // console.log("card number", this.magicControl.cardNumber);
+    // console.log("card cardSuit", this.magicControl.cardSuit);
 
 
     this.setCardWidth();
@@ -147,7 +144,7 @@ export class MagicPageComponent {
 
 
   ngOnDestroy() {
-    console.log("MagicPageComponent ngOnDestroy");
+    // console.log("MagicPageComponent ngOnDestroy");
     document.removeEventListener("touchstart", this.selfSetCard);
     this.removeBackToHomePageEvent();
   }
@@ -170,7 +167,7 @@ export class MagicPageComponent {
       }
 
       this.keepTouchTwoFingerTimer = setTimeout(() => {
-        console.log("test backToHomePage");
+        // console.log("test backToHomePage");
         this.router.navigate(['']);
       }, this.keppTouchReloadTime);
 
