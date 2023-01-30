@@ -3,6 +3,10 @@ import { Router } from '@angular/router';
 import * as p5 from 'p5';
 import { MagicControl } from "../MagicControl";
 
+
+declare var cordova: any;
+
+
 @Component({
   selector: 'app-magic-page',
   templateUrl: './magic-page.component.html',
@@ -27,6 +31,8 @@ export class MagicPageComponent {
   keepTouchTwoFingerTimer: NodeJS.Timeout| undefined = undefined;
   keppTouchReloadTime = 2500;
 
+  openBrightness = false;
+
   constructor(private router: Router) {
     this.magicControl = new MagicControl(this.width, this.height);
     this.selfSetCard = this.setCard.bind(this);
@@ -36,6 +42,12 @@ export class MagicPageComponent {
 
 
   ngOnInit() {
+
+    // 先把 brightness 調到最暗
+    let brightness = cordova.plugins.brightness;
+    brightness.setBrightness(0, ()=>{}, ()=>{});
+    brightness.setKeepScreenOn(true);
+
     // console.log("width, height", this.width, this.height);
     const s = (sketch: any) => {
 
@@ -50,6 +62,12 @@ export class MagicPageComponent {
 
       sketch.draw = () => {
         if (this.canStartShow && sketch.mouseIsPressed) {
+
+          if(this.openBrightness === false) {
+            brightness.setBrightness(0.5, ()=>{}, ()=>{});
+            this.openBrightness = true;
+          }
+          
           sketch.ellipse(sketch.mouseX, sketch.mouseY, 80, 80);
         }
       };
@@ -147,6 +165,10 @@ export class MagicPageComponent {
     // console.log("MagicPageComponent ngOnDestroy");
     document.removeEventListener("touchstart", this.selfSetCard);
     this.removeBackToHomePageEvent();
+
+    let brightness = cordova.plugins.brightness;
+    brightness.setBrightness(-1, ()=>{}, ()=>{});
+    brightness.setKeepScreenOn(false);
   }
 
   addBackToHomePageEvent() {
