@@ -12,6 +12,7 @@
 
     <preference name="scheme" value="app" />
     <preference name="hostname" value="localhost" />
+    <preference name="DisallowOverscroll" value="true" />
 
 
     <platform name="android">

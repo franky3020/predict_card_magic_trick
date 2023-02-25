@@ -2,13 +2,14 @@
 set -x #echo on
 
 
-
+npm i
 rm -rf ./platforms
 rm -rf ./plugins
 
 rm -rf ./www
 
 cd ../angular_web
+npm i
 npm run build
 
 cd ../cordovaApp
