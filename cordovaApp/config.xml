@@ -10,7 +10,6 @@
     <allow-intent href="https://*/*" />
     <preference name="Fullscreen" value="true" />
 
-    <preference name="scheme" value="app" />
     <preference name="hostname" value="localhost" />
     <preference name="DisallowOverscroll" value="true" />
 
@@ -21,6 +20,11 @@
         <icon background="res/icon/android/mipmap-xhdpi/ic_launcher_background.png" density="xhdpi" foreground="res/icon/android/mipmap-xhdpi/ic_launcher_foreground.png" />
         <icon background="res/icon/android/mipmap-xxhdpi/ic_launcher_background.png" density="xxhdpi" foreground="res/icon/android/mipmap-xxhdpi/ic_launcher_foreground.png" />
         <icon background="res/icon/android/mipmap-xxxhdpi/ic_launcher_background.png" density="xxxhdpi" foreground="res/icon/android/mipmap-xxxhdpi/ic_launcher_foreground.png" />
+    </platform>
+
+    <platform name="ios">
+        <!-- Android 要用 預設的 https , ios 才要用 app, 如果Android 用 app, 則無法調整亮度, 這是測試出來的 原因不明 -->
+        <preference name="scheme" value="app" />
     </platform>
 
 
