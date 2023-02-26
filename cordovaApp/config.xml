@@ -12,6 +12,7 @@
 
     <preference name="hostname" value="localhost" />
     <preference name="DisallowOverscroll" value="true" />
+    <preference name="orientation" value="portrait" />
 
 
     <platform name="android">
