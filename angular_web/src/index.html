@@ -8,7 +8,11 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <script type="text/javascript" src="cordova.js"></script>
 </head>
-<body  ondragstart="return false">
+
+<!-- oncontextmenu: 禁止右鍵點擊 -->
+<!-- ondragstart: 禁止滑動 -->
+<!-- onselectstart: 禁止反白選取 -->
+<body onselectstart="return false" oncontextmenu="return false" ondragstart="return false">
   <app-root></app-root>
 </body>
 </html>
