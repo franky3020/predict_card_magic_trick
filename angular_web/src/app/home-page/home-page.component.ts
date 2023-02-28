@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+declare var cordova: any;
+
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
@@ -12,7 +14,9 @@ export class HomePageComponent {
   }
 
   async ngOnInit() {
-
+    let brightness = cordova.plugins.brightness;
+    brightness.setBrightness(0.5, ()=>{}, ()=>{});
+    brightness.setKeepScreenOn(true);
     
   }
   
