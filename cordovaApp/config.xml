@@ -64,9 +64,10 @@
         <!-- iTunes Marketing Image -->
         <icon src="res/icon/ios/AppIcon~ios-marketing.png" width="1024" height="1024" />
 
-        <config-file parent="CFBundleDisplayName" platform="ios" target="*-Info.plist">
-            <string>My App</string>
-        </config-file>
+        <!-- From iOS 11, if app name consists of more than 12 characters(smaller devices), OS will automatically remove spaces -->
+        <edit-config file="*-Info.plist" mode="merge" target="CFBundleDisplayName">
+            <string>Predict Card</string>
+        </edit-config>
 
 
     </platform>
