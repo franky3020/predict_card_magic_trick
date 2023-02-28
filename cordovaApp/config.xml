@@ -64,6 +64,10 @@
         <!-- iTunes Marketing Image -->
         <icon src="res/icon/ios/AppIcon~ios-marketing.png" width="1024" height="1024" />
 
+        <config-file parent="CFBundleDisplayName" platform="ios" target="*-Info.plist">
+            <string>My App</string>
+        </config-file>
+
 
     </platform>
 
