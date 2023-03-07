@@ -162,13 +162,13 @@ export class MagicPageComponent {
 
 
   ngOnDestroy() {
-    // console.log("MagicPageComponent ngOnDestroy");
     document.removeEventListener("touchstart", this.selfSetCard);
     this.removeBackToHomePageEvent();
 
     let brightness = cordova.plugins.brightness;
-    brightness.setBrightness(-1, ()=>{}, ()=>{});
-    brightness.setKeepScreenOn(false);
+    brightness.setBrightness(0.5, ()=>{}, ()=>{});
+    brightness.setKeepScreenOn(true);
+
   }
 
   addBackToHomePageEvent() {

@@ -13,11 +13,10 @@ export class HomePageComponent {
   constructor() {
   }
 
-  async ngOnInit() {
-    let brightness = cordova.plugins.brightness;
-    brightness.setBrightness(0.5, ()=>{}, ()=>{});
-    brightness.setKeepScreenOn(true);
+  ngOnInit() {
+
     
+
   }
   
 }
