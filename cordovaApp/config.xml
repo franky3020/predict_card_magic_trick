@@ -63,8 +63,7 @@
         <!-- <icon src="res/ios/AppIcon-50@2x.png" width="100" height="100" /> -->
         <!-- iTunes Marketing Image -->
         <icon src="res/icon/ios/AppIcon~ios-marketing.png" width="1024" height="1024" />
-
-        <splash src="res/screen/ios/Default@2x~universal~anyany.png" />
+        <splash src="res/splash/ios/Default@2x~universal~anyany.png" />
 
 
         <!-- From iOS 11, if app name consists of more than 12 characters(smaller devices), OS will automatically remove spaces -->
