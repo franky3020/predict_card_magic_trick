@@ -2,6 +2,10 @@
 
 node 18.12.1
 
+## iOS
+appid: tw.franky.predictcard
+android: tw.franky.predict_card
+
 ## 相關設定
 使用 <preference name="Fullscreen" value="true" /> 可達到全螢幕模式
 
