@@ -2,9 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import * as p5 from 'p5';
 import { MagicControl } from "../MagicControl";
-
-
-declare var cordova: any;
+import { CordovaPluginService } from "../cordova-plugin.service";
 
 
 @Component({
@@ -33,7 +31,10 @@ export class MagicPageComponent {
 
   openBrightness = false;
 
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    private cordovaPluginService: CordovaPluginService
+    ) {
     this.magicControl = new MagicControl(this.width, this.height);
     this.selfSetCard = this.setCard.bind(this);
     this.selfBackToHomePage = this.backToHomePage.bind(this);
@@ -44,11 +45,8 @@ export class MagicPageComponent {
   ngOnInit() {
 
     // 先把 brightness 調到最暗
-    let brightness = cordova.plugins.brightness;
-    brightness.setBrightness(0, ()=>{}, ()=>{});
-    brightness.setKeepScreenOn(true);
+    this.cordovaPluginService.setBrightness(0);
 
-    // console.log("width, height", this.width, this.height);
     const s = (sketch: any) => {
 
       sketch.setup = () => {
@@ -64,7 +62,7 @@ export class MagicPageComponent {
         if (this.canStartShow && sketch.mouseIsPressed) {
 
           if(this.openBrightness === false) {
-            brightness.setBrightness(0.5, ()=>{}, ()=>{});
+            this.cordovaPluginService.setBrightness(0.5);
             this.openBrightness = true;
           }
           
@@ -162,12 +160,11 @@ export class MagicPageComponent {
 
 
   ngOnDestroy() {
+    console.log("magic paage ngOnDestroy");
     document.removeEventListener("touchstart", this.selfSetCard);
     this.removeBackToHomePageEvent();
 
-    let brightness = cordova.plugins.brightness;
-    brightness.setBrightness(0.5, ()=>{}, ()=>{});
-    brightness.setKeepScreenOn(true);
+    this.cordovaPluginService.setBrightness(0.5);
 
   }
 
