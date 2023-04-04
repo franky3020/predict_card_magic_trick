@@ -1,4 +1,7 @@
-# magic_poker
+# Predict Card Magic Trick (iOS, Android)
+
+此為一個魔術app, 效果為預言出觀眾所選的卡牌,
+使用 Angular + p5.js + Cordova 製作而成
 
 效果展示影片:
 https://www.youtube.com/watch?v=ppQnhk8IS2I
