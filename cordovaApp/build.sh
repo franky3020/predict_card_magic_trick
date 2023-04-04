@@ -13,12 +13,8 @@ npm i
 npm run build
 
 cd ../cordovaApp
-## 改成angular
-cp -r ../angular_web/dist/angular_web ./www
 
-## 舊的
-# cp -r ../web ./www
-# rm -rf ./www/node_modules
+cp -r ../angular_web/dist/angular_web ./www
 
 npx cordova prepare
 npx cordova platform rm android --nosave
