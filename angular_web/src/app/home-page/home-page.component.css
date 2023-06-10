@@ -2,3 +2,18 @@
     background-color: black;
     height: 100vh;
 }
+
+.app-link {
+    margin-top: 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    margin-bottom: 10rem;
+    font-size: 40px;
+}
+
+@media screen and (max-height: 500px){
+
+    .app-link {
+        margin-bottom: 2rem;
+    }
+}

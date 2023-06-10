@@ -15,6 +15,10 @@
     animation: watch-me 3.5s ease-in-out infinite alternate;
 }
 
+.vedio-link {
+    padding: 1rem;
+    font-size: 25px;
+}
 
 
 @keyframes watch-me {

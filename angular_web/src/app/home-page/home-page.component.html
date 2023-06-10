@@ -1,5 +1,12 @@
 <div class="home-page d-flex justify-content-center align-items-center">
   <div class="d-flex flex-column">
+    <img
+      class="mx-auto app-link"
+      style="width: 100%"
+      src="assets/PredictCardText.png"
+      (click)="goToAppStroe()"
+    />
+
     <button
       *ngIf="isUserLearned"
       type="button"
@@ -26,8 +33,5 @@
     >
       Learn
     </button>
-
-    <!-- TODO: -->
-    <!-- <p class="text-light">link to store</p> -->
   </div>
 </div>
