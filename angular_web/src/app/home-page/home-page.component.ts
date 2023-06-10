@@ -15,7 +15,7 @@ export class HomePageComponent {
 
 
   isUserLearned = false;
-  appLink = googlePlayLink;
+  appLink = '';
 
 
   constructor(
@@ -29,7 +29,12 @@ export class HomePageComponent {
   }
 
   goToAppStroe() {
-    window.open(this.appLink, '_blank');
+    if (this.appLink) {
+      window.open(this.appLink, '_blank');
+    }
+
+    // TODO: 需處理在web模擬的情況
+    
   }
 
   updateAppLink() {
@@ -39,6 +44,8 @@ export class HomePageComponent {
       } else if (device.platform === 'iOS') {
         this.appLink = appStoreLink;
       }
+    } else {
+      this.appLink = googlePlayLink;
     }
   }
   
