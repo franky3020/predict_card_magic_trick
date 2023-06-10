@@ -1,15 +1,33 @@
-
-
 <div class="home-page d-flex justify-content-center align-items-center">
+  <div class="d-flex flex-column">
+    <button
+      *ngIf="isUserLearned"
+      type="button"
+      class="btn btn-dark m-3 p-3 fs-1"
+      routerLink="/magic-page"
+    >
+      Start
+    </button>
 
-<div class="d-flex flex-column ">
+    <button
+      *ngIf="isUserLearned"
+      type="button"
+      class="btn btn-dark m-3 p-3 fs-1"
+      routerLink="/tip-page"
+    >
+      Tip
+    </button>
 
-    <button type="button" class="btn btn-dark m-3 p-3 fs-1"  routerLink="/magic-page" >Start</button>
+    <button
+      type="button"
+      class="btn btn-dark m-3 p-3 fs-1"
+      [ngClass]="{ 'text-danger': !isUserLearned }"
+      routerLink="/learn-page"
+    >
+      Learn
+    </button>
 
-    <button type="button" class="btn btn-dark m-3 p-3 fs-1"  routerLink="/tip-page" >Tip</button>
-
-    <button type="button" class="btn btn-dark m-3 p-3 fs-1"  routerLink="/learn-page" >Learn</button>
-
-</div>
-
+    <!-- TODO: -->
+    <!-- <p class="text-light">link to store</p> -->
+  </div>
 </div>

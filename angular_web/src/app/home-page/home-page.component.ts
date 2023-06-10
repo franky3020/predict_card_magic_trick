@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { LocalStorageService } from '../local-storage.service';
 declare var cordova: any;
 
 @Component({
@@ -10,13 +10,14 @@ declare var cordova: any;
 export class HomePageComponent {
 
 
-  constructor() {
-  }
+  isUserLearned = false;
+
+  constructor(
+    private localStorageService: LocalStorageService
+  ) {}
 
   ngOnInit() {
-
-    
-
+    this.isUserLearned = this.localStorageService.isUserLearned();
   }
   
 }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LocalStorageService } from '../local-storage.service';
 
 @Component({
   selector: 'app-learn-page',
@@ -7,8 +8,12 @@ import { Component } from '@angular/core';
 })
 export class LearnPageComponent {
 
-  constructor() {
+  constructor(
+    private localStorageService: LocalStorageService
+  ) {}
 
+  ngOnInit() {
+    this.localStorageService.userLearned();
   }
   
   goToVedio1() {
