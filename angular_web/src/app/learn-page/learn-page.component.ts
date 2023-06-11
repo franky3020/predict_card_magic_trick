@@ -17,6 +17,6 @@ export class LearnPageComponent {
   }
   
   goToVedio1() {
-    window.open('https://www.youtube.com/shorts/ppQnhk8IS2I', '_blank');
+    window.open('https://www.youtube.com/shorts/ppQnhk8IS2I', '_system');
   }
 }

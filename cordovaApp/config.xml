@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="tw.franky.predictcard" version="1.2.8" android-packageName="tw.franky.predict_card" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="tw.franky.predictcard" version="1.3.3" android-packageName="tw.franky.predict_card" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Predict Card Magic Trick</name>
     <description>Predict card magic app</description>
     <author email="210238hwsh@gmail.com">
@@ -8,6 +8,7 @@
     <content src="index.html" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
+    <!-- <allow-navigation href="*" />  -->
     <preference name="Fullscreen" value="true" />
 
     <preference name="hostname" value="localhost" />
@@ -16,6 +17,7 @@
 
 
     <platform name="android">
+        <allow-intent href="market:*" />
         <icon background="res/icon/android/mipmap-mdpi/ic_launcher_background.png" density="mdpi" foreground="res/icon/android/mipmap-mdpi/ic_launcher_foreground.png" />
         <icon background="res/icon/android/mipmap-hdpi/ic_launcher_background.png" density="hdpi" foreground="res/icon/android/mipmap-hdpi/ic_launcher_foreground.png" />
         <icon background="res/icon/android/mipmap-xhdpi/ic_launcher_background.png" density="xhdpi" foreground="res/icon/android/mipmap-xhdpi/ic_launcher_foreground.png" />
@@ -26,6 +28,8 @@
     <platform name="ios">
         <!-- Android 要用 預設的 https , ios 才要用 app, 如果Android 用 app, 則無法調整亮度, 這是測試出來的 原因不明 -->
         <preference name="scheme" value="app" />
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
 
         <!-- 讓apple 不會一直問有沒有加密 -->
         <edit-config file="*-Info.plist" mode="add" target="ITSAppUsesNonExemptEncryption">

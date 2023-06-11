@@ -1,19 +1,38 @@
 .home-page {
     background-color: black;
     height: 100vh;
+    overflow: hidden;
 }
 
 .app-link {
     margin-top: 2rem;
     padding-left: 2rem;
     padding-right: 2rem;
-    margin-bottom: 10rem;
+    margin-bottom: 7rem;
     font-size: 40px;
 }
 
-@media screen and (max-height: 500px){
+.op-btn {
+    margin: 1rem;
+    padding: 1rem;
+    font-size: 30px;
+}
+
+@media screen and (max-height: 650px){
 
     .app-link {
         margin-bottom: 2rem;
+    }
+}
+
+@media screen and (max-height: 520px){
+
+    .op-btn {
+        margin-top: 1rem;
+        margin-bottom: 0rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
+        padding: 0rem;
+        font-size: 18px;
     }
 }

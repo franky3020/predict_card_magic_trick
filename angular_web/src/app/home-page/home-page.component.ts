@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
 import { LocalStorageService } from '../local-storage.service';
-declare var cordova: any;
-declare var device: any;
+declare var deviceInfo: any;
 
 const googlePlayLink = 'https://play.google.com/store/apps/details?id=tw.franky.predict_card';
-const appStoreLink = 'https://apps.apple.com/us/app/predict-card-magic-trick/id6445894214';
-
+const appStoreLink = 'itms-apps://itunes.apple.com/us/app/predict-card-magic-trick/id6445894214';
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
@@ -17,11 +15,10 @@ export class HomePageComponent {
   isUserLearned = false;
   appLink = '';
 
-
   constructor(
     private localStorageService: LocalStorageService
   ) {
-    document.addEventListener("deviceready", this.updateAppLink, false);
+
   }
 
   ngOnInit() {
@@ -29,22 +26,22 @@ export class HomePageComponent {
   }
 
   goToAppStroe() {
+    if (typeof deviceInfo !== 'undefined') {
+      const platform = deviceInfo.platform;
+
+      if (platform === 'Android') {
+        this.appLink = googlePlayLink;
+      } else if (platform === 'iOS') {
+        this.appLink = appStoreLink;
+      }
+    }
+
     if (this.appLink) {
-      window.open(this.appLink, '_blank');
+      window.open(this.appLink, "_system");
     }
 
     // TODO: 需處理在web模擬的情況
     
-  }
-
-  updateAppLink() {
-    if (device) {
-      if (device.platform === 'Android') {
-        this.appLink = googlePlayLink;
-      } else if (device.platform === 'iOS') {
-        this.appLink = appStoreLink;
-      }
-    }
   }
   
 }
