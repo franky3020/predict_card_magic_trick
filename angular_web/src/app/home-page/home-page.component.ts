@@ -44,8 +44,6 @@ export class HomePageComponent {
       } else if (device.platform === 'iOS') {
         this.appLink = appStoreLink;
       }
-    } else {
-      this.appLink = googlePlayLink;
     }
   }
   
