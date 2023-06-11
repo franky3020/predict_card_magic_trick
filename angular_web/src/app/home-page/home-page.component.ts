@@ -13,9 +13,7 @@ export class HomePageComponent {
 
 
   isUserLearned = false;
-  appLink = 'Empty';
-  platform = 'platform Empty';
-
+  appLink = '';
 
   constructor(
     private localStorageService: LocalStorageService
@@ -29,11 +27,11 @@ export class HomePageComponent {
 
   goToAppStroe() {
     if (typeof deviceInfo !== 'undefined') {
-      this.platform = deviceInfo.platform;
+      const platform = deviceInfo.platform;
 
-      if (this.platform === 'Android') {
+      if (platform === 'Android') {
         this.appLink = googlePlayLink;
-      } else if (this.platform === 'iOS') {
+      } else if (platform === 'iOS') {
         this.appLink = appStoreLink;
       }
     }
@@ -45,19 +43,5 @@ export class HomePageComponent {
     // TODO: 需處理在web模擬的情況
     
   }
-
-  // @HostListener('deviceready', [])
-  // updateAppLink() {
-  //   if (typeof device !== 'undefined') {
-  //     this.platform = device.platform;
-
-  //     if (device.platform === 'Android') {
-  //       this.appLink = googlePlayLink;
-  //     } else if (device.platform === 'iOS') {
-  //       this.appLink = appStoreLink;
-  //     }
-  //   }
-  //   this.appLink = appStoreLink;
-  // }
   
 }
