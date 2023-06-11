@@ -24,18 +24,23 @@ export class HomePageComponent {
     private localStorageService: LocalStorageService
   ) {
     // document.addEventListener("deviceready", this.updateAppLink, false);
-    document.addEventListener('deviceready', () => {
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    const self = this;
+    function onDeviceReady() {
+
       if (typeof device !== 'undefined') {
-        this.platform = device.platform;
+        self.platform = device.platform;
   
         if (device.platform === 'Android') {
-          this.appLink = googlePlayLink;
+          self.appLink = googlePlayLink;
         } else if (device.platform === 'iOS') {
-          this.appLink = appStoreLink;
+          self.appLink = appStoreLink;
         }
       }
-      this.appLink = appStoreLink;
-    }, false);
+      self.appLink = appStoreLink;
+    }
+
   }
 
   ngOnInit() {
