@@ -24,6 +24,18 @@ export class HomePageComponent {
     private localStorageService: LocalStorageService
   ) {
     // document.addEventListener("deviceready", this.updateAppLink, false);
+    document.addEventListener('deviceready', () => {
+      if (typeof device !== 'undefined') {
+        this.platform = device.platform;
+  
+        if (device.platform === 'Android') {
+          this.appLink = googlePlayLink;
+        } else if (device.platform === 'iOS') {
+          this.appLink = appStoreLink;
+        }
+      }
+      this.appLink = appStoreLink;
+    }, false);
   }
 
   ngOnInit() {
@@ -39,18 +51,18 @@ export class HomePageComponent {
     
   }
 
-  @HostListener('deviceready', [])
-  updateAppLink() {
-    if (typeof device !== 'undefined') {
-      this.platform = device.platform;
+  // @HostListener('deviceready', [])
+  // updateAppLink() {
+  //   if (typeof device !== 'undefined') {
+  //     this.platform = device.platform;
 
-      if (device.platform === 'Android') {
-        this.appLink = googlePlayLink;
-      } else if (device.platform === 'iOS') {
-        this.appLink = appStoreLink;
-      }
-    }
-    this.appLink = appStoreLink;
-  }
+  //     if (device.platform === 'Android') {
+  //       this.appLink = googlePlayLink;
+  //     } else if (device.platform === 'iOS') {
+  //       this.appLink = appStoreLink;
+  //     }
+  //   }
+  //   this.appLink = appStoreLink;
+  // }
   
 }
