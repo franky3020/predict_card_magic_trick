@@ -3,5 +3,15 @@
     "[html]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode",
         "editor.formatOnSave": true
-    }
+    },
+    "favorites.resources": [
+        {
+            "filePath": "cordovaApp/platforms",
+            "group": "Default"
+        },
+        {
+            "filePath": "cordovaApp/config.xml",
+            "group": "Default"
+        }
+    ]
 }
