@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
 import { LocalStorageService } from '../local-storage.service';
-import { HostListener } from "@angular/core";
-declare var cordova: any;
-declare var device: any;
 declare var deviceInfo: any;
 
 const googlePlayLink = 'https://play.google.com/store/apps/details?id=tw.franky.predict_card';
