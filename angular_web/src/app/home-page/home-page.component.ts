@@ -17,6 +17,7 @@ export class HomePageComponent {
 
   isUserLearned = false;
   appLink = 'Empty';
+  platform = 'platform Empty';
 
 
   constructor(
@@ -41,6 +42,8 @@ export class HomePageComponent {
   @HostListener('deviceready', [])
   updateAppLink() {
     if (typeof device !== 'undefined') {
+      this.platform = device.platform;
+
       if (device.platform === 'Android') {
         this.appLink = googlePlayLink;
       } else if (device.platform === 'iOS') {
