@@ -15,7 +15,7 @@ export class HomePageComponent {
 
 
   isUserLearned = false;
-  appLink = '';
+  appLink = 'Empty';
 
 
   constructor(
@@ -38,13 +38,14 @@ export class HomePageComponent {
   }
 
   updateAppLink() {
-    if (device) {
+    if (typeof device !== 'undefined') {
       if (device.platform === 'Android') {
         this.appLink = googlePlayLink;
       } else if (device.platform === 'iOS') {
         this.appLink = appStoreLink;
       }
     }
+    this.appLink = appStoreLink;
   }
   
 }
