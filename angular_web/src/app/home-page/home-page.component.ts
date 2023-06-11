@@ -24,15 +24,6 @@ export class HomePageComponent {
   constructor(
     private localStorageService: LocalStorageService
   ) {
-    if (typeof deviceInfo !== 'undefined') {
-      this.platform = deviceInfo.platform;
-
-      if (device.platform === 'Android') {
-        this.appLink = googlePlayLink;
-      } else if (device.platform === 'iOS') {
-        this.appLink = appStoreLink;
-      }
-    }
 
   }
 
@@ -41,6 +32,16 @@ export class HomePageComponent {
   }
 
   goToAppStroe() {
+    if (typeof deviceInfo !== 'undefined') {
+      this.platform = deviceInfo.platform;
+
+      if (this.platform === 'Android') {
+        this.appLink = googlePlayLink;
+      } else if (this.platform === 'iOS') {
+        this.appLink = appStoreLink;
+      }
+    }
+
     if (this.appLink) {
       window.open(this.appLink, '_blank');
     }
