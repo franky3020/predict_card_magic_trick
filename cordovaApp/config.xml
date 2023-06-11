@@ -8,7 +8,7 @@
     <content src="index.html" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
-    <!-- <allow-navigation href="*" />  -->
+    <!-- <allow-navigation href="*" 不可使用此設定, 會導致 link 不是開新視窗, 會用內建瀏覽器, 所以會出錯/>  -->
     <preference name="Fullscreen" value="true" />
 
     <preference name="hostname" value="localhost" />
