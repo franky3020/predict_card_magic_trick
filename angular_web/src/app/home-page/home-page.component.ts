@@ -6,7 +6,7 @@ declare var device: any;
 declare var deviceInfo: any;
 
 const googlePlayLink = 'https://play.google.com/store/apps/details?id=tw.franky.predict_card';
-const appStoreLink = 'https://apps.apple.com/us/app/predict-card-magic-trick/id6445894214';
+const appStoreLink = 'itms-apps://itunes.apple.com/app/id6445894214';
 
 @Component({
   selector: 'app-home-page',
