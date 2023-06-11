@@ -3,6 +3,7 @@ import { LocalStorageService } from '../local-storage.service';
 import { HostListener } from "@angular/core";
 declare var cordova: any;
 declare var device: any;
+declare var deviceInfo: any;
 
 const googlePlayLink = 'https://play.google.com/store/apps/details?id=tw.franky.predict_card';
 const appStoreLink = 'https://apps.apple.com/us/app/predict-card-magic-trick/id6445894214';
@@ -23,22 +24,14 @@ export class HomePageComponent {
   constructor(
     private localStorageService: LocalStorageService
   ) {
-    // document.addEventListener("deviceready", this.updateAppLink, false);
-    document.addEventListener("deviceready", onDeviceReady, false);
+    if (typeof deviceInfo !== 'undefined') {
+      this.platform = deviceInfo.platform;
 
-    const self = this;
-    function onDeviceReady() {
-
-      if (typeof device !== 'undefined') {
-        self.platform = device.platform;
-  
-        if (device.platform === 'Android') {
-          self.appLink = googlePlayLink;
-        } else if (device.platform === 'iOS') {
-          self.appLink = appStoreLink;
-        }
+      if (device.platform === 'Android') {
+        this.appLink = googlePlayLink;
+      } else if (device.platform === 'iOS') {
+        this.appLink = appStoreLink;
       }
-      self.appLink = appStoreLink;
     }
 
   }

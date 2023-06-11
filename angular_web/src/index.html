@@ -14,11 +14,13 @@
       //add event listener
       document.addEventListener("deviceready", onDeviceReady, false);
 
+      let deviceInfo = undefined;
       function onDeviceReady() {
         console.log(device); // device object
         console.log(device.name); // Gives the name of device.
         console.log(device.uuid); // Gives the UUID.
         console.log(device.platform);
+        deviceInfo = device;
       }
     </script>
   </head>
