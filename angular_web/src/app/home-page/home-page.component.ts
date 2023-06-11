@@ -3,8 +3,7 @@ import { LocalStorageService } from '../local-storage.service';
 declare var deviceInfo: any;
 
 const googlePlayLink = 'https://play.google.com/store/apps/details?id=tw.franky.predict_card';
-const appStoreLink = 'itms-apps://itunes.apple.com/app/id6445894214';
-
+const appStoreLink = 'itms-apps://itunes.apple.com/us/app/predict-card-magic-trick/id6445894214';
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
