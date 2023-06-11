@@ -43,7 +43,7 @@ export class HomePageComponent {
     }
 
     if (this.appLink) {
-      window.open(this.appLink);
+      window.open(this.appLink, "_system");
     }
 
     // TODO: 需處理在web模擬的情況
