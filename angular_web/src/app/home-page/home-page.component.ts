@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { LocalStorageService } from '../local-storage.service';
+import { HostListener } from "@angular/core";
 declare var cordova: any;
 declare var device: any;
 
@@ -21,7 +22,7 @@ export class HomePageComponent {
   constructor(
     private localStorageService: LocalStorageService
   ) {
-    document.addEventListener("deviceready", this.updateAppLink, false);
+    // document.addEventListener("deviceready", this.updateAppLink, false);
   }
 
   ngOnInit() {
@@ -37,6 +38,7 @@ export class HomePageComponent {
     
   }
 
+  @HostListener('deviceready', [])
   updateAppLink() {
     if (typeof device !== 'undefined') {
       if (device.platform === 'Android') {
