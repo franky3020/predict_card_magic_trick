@@ -25,7 +25,8 @@
       "cordova-plugin-brightness": {},
       "cordova-plugin-hide-home-indicator": {},
       "cordova-plugin-splashscreen": {},
-      "cordova-plugin-device": {}
+      "cordova-plugin-device": {},
+      "cordova-plugin-powermanagement": {}
     }
   },
   "devDependencies": {
@@ -34,6 +35,7 @@
     "cordova-plugin-brightness": "^0.2.0",
     "cordova-plugin-device": "^2.1.0",
     "cordova-plugin-hide-home-indicator": "^1.0.1",
+    "cordova-plugin-powermanagement": "^1.0.5",
     "cordova-plugin-screen-orientation": "^3.0.2",
     "cordova-plugin-splashscreen": "^6.0.1",
     "es6-promise-plugin": "^4.2.2"

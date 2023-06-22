@@ -47,6 +47,8 @@ export class MagicPageComponent {
     // 先把 brightness 調到最暗
     this.cordovaPluginService.setBrightness(0);
 
+    this.cordovaPluginService.powermanagementAcquire();
+
     const s = (sketch: any) => {
 
       sketch.setup = () => {
