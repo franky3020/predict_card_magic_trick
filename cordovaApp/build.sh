@@ -3,12 +3,14 @@ set -x #echo on
 
 
 npm i
+rm -rf ./node_modules
 rm -rf ./platforms
 rm -rf ./plugins
 
 rm -rf ./www
 
 cd ../angular_web
+rm -rf ./node_modules
 npm i
 npm run build
 

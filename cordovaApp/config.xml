@@ -23,6 +23,7 @@
         <icon background="res/icon/android/mipmap-xhdpi/ic_launcher_background.png" density="xhdpi" foreground="res/icon/android/mipmap-xhdpi/ic_launcher_foreground.png" />
         <icon background="res/icon/android/mipmap-xxhdpi/ic_launcher_background.png" density="xxhdpi" foreground="res/icon/android/mipmap-xxhdpi/ic_launcher_foreground.png" />
         <icon background="res/icon/android/mipmap-xxxhdpi/ic_launcher_background.png" density="xxxhdpi" foreground="res/icon/android/mipmap-xxxhdpi/ic_launcher_foreground.png" />
+        <preference name="loadUrlTimeoutValue" value="700000" />
     </platform>
 
     <platform name="ios">
