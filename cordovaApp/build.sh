@@ -21,6 +21,7 @@ cp -r ../angular_web/dist/angular_web ./www
 npx cordova prepare
 npx cordova platform rm android --nosave
 npx cordova platform add android
+npx cordova build android
 
 npx cordova platform rm ios --nosave
 npx cordova platform add ios
