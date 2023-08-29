@@ -29,7 +29,7 @@
     }
   },
   "devDependencies": {
-    "cordova-android": "^12.0.0",
+    "cordova-android": "^12.0.1",
     "cordova-ios": "^7.0.0",
     "cordova-plugin-brightness": "^0.2.0",
     "cordova-plugin-device": "^2.1.0",
