@@ -31,6 +31,8 @@ export class MagicPageComponent {
 
   openBrightness = false;
 
+  p5Obj: p5 | undefined;
+
   constructor(
     private router: Router,
     private cordovaPluginService: CordovaPluginService
@@ -73,7 +75,8 @@ export class MagicPageComponent {
       };
     };
 
-    new p5(s);
+    this.p5Obj = new p5(s);
+    
 
     this.addSetCradEvent();
     this.addBackToHomePageEvent();
@@ -162,12 +165,15 @@ export class MagicPageComponent {
 
 
   ngOnDestroy() {
-    console.log("magic paage ngOnDestroy");
+    console.log("magic page ngOnDestroy");
     document.removeEventListener("touchstart", this.selfSetCard);
     this.removeBackToHomePageEvent();
 
     this.cordovaPluginService.setBrightness(0.5);
 
+    if (typeof this.p5Obj !== "undefined") {
+      this.p5Obj.remove();
+    }
   }
 
   addBackToHomePageEvent() {
@@ -181,7 +187,7 @@ export class MagicPageComponent {
   }
 
   backToHomePage(event: TouchEvent) {
-    if (event.touches.length === 2) { // TODO: 改成2
+    if (event.touches.length === 2) {
 
       if (typeof this.keepTouchTwoFingerTimer !== "undefined") {
         clearTimeout(this.keepTouchTwoFingerTimer);
