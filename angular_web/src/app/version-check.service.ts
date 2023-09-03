@@ -10,23 +10,23 @@ declare var device: any;
 export class VersionCheckService {
   constructor(private http: HttpClient) {}
 
-  getVersion() {
-    return this.http.get<{ [version: string]: VersionRes }>(
-      'http://localhost:3000/appversion'
-    );
-  }
 
   checkNeedToForceUpdate(version: string): Promise<boolean> {
     return new Promise((resolve) => {
       this.http
-        .get<{ [version: string]: VersionRes }>(
+        .get<VersionRes>(
           'http://localhost:3000/appversion'
         )
         .subscribe({
           next: (res) => {
-            const versionRes = res[version];
+            const versionRes = res.versionDict[version];
             if (typeof versionRes !== 'undefined') {
-              return resolve(versionRes.forceUpdate);
+              if (versionRes.forceUpdate) {
+                const lastVersion = res.lastVersion;
+                this.isNewVersionFitUserDevice(lastVersion.minSDK, lastVersion.miniOS).then((isFit) => {
+                  return resolve(isFit);
+                });
+              }
             } else {
               return resolve(false);
             }
@@ -39,23 +39,32 @@ export class VersionCheckService {
     });
   }
 
-  isNewVersionFitUserDevice(androidMinSdk: string, iOSMinVersion: string) {
-    document.addEventListener("deviceready", () => {
-      const version = device.version;
+  isNewVersionFitUserDevice(androidMinSdk: string, iOSMinVersion: string): Promise<boolean> {
 
-      const platform = device.platform;
+    const inWebTest = true;
 
-      if (platform === 'Android') {
+    return new Promise((resolve) => {
 
-      } else if (platform === 'iOS') {
-
+      if (inWebTest) {
+        return resolve(true);
       }
+      
 
-
-    }, false);
+      document.addEventListener("deviceready", () => {
+        const version = device.version;
+        const platform = device.platform;
+  
+        if (platform === 'Android') {
+          return resolve(VersionCheckService.isV1GreatThanV2(version, androidMinSdk));
+        } else if (platform === 'iOS') {
+          return resolve(VersionCheckService.isV1GreatThanV2(version, iOSMinVersion));
+        }
+  
+      }, false);
+    })
   }
 
-  static isV1GreateThanV2(v1: string, v2: string): boolean {
+  static isV1GreatThanV2(v1: string, v2: string): boolean {
     const v1Array = v1.split('.');
     const v2Array = v2.split('.');
 

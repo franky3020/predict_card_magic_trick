@@ -3,7 +3,6 @@ import { LocalStorageService } from '../local-storage.service';
 import { VersionCheckService } from '../version-check.service';
 import { Router } from '@angular/router';
 import { NgZone } from '@angular/core';
-import { VersionRes } from '../apiRes/VersionRes';
 import {MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
 import { RemindPopupComponent } from "../component/remind-popup/remind-popup.component";
 
@@ -46,15 +45,6 @@ export class HomePageComponent {
           this.zone.run(() => {
             this.appVersion = version;
           });
-
-          this.versionCheckService.getVersion().subscribe((res: {[version: string]: VersionRes}) => {
-            console.log("res['1.3.7'].forceUpdate: ");
-            console.log(res["1.3.7"].forceUpdate);
-            console.log("res['1.3.8'].forceUpdate: ");
-            console.log(res["1.3.8"].forceUpdate);
-          });
-
-
         });
       }
     }, false);
