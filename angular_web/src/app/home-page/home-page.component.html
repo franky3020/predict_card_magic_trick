@@ -11,7 +11,7 @@
       *ngIf="isUserLearned"
       type="button"
       class="btn btn-dark op-btn"
-      routerLink="/magic-page"
+      (click)="goToMagicPage()"
     >
       Start
     </button>
@@ -20,7 +20,7 @@
       *ngIf="isUserLearned"
       type="button"
       class="btn btn-dark op-btn"
-      routerLink="/tip-page"
+      (click)="goToTipPage()"
     >
       Tip
     </button>
@@ -29,7 +29,7 @@
       type="button"
       class="btn btn-dark op-btn"
       [ngClass]="{ 'text-danger': !isUserLearned }"
-      routerLink="/learn-page"
+      (click)="goToLearnPage()"
     >
       Learn
     </button>

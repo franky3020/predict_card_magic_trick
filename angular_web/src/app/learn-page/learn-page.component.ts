@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { LocalStorageService } from '../local-storage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-learn-page',
@@ -9,7 +10,8 @@ import { LocalStorageService } from '../local-storage.service';
 export class LearnPageComponent {
 
   constructor(
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private router: Router,
   ) {}
 
   ngOnInit() {
@@ -18,5 +20,9 @@ export class LearnPageComponent {
   
   goToVedio1() {
     window.open('https://www.youtube.com/shorts/ppQnhk8IS2I', '_system');
+  }
+
+  goToHomePage() {
+    this.router.navigate(['']);
   }
 }
