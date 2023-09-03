@@ -7,6 +7,7 @@ import { TipPageComponent } from './tip-page/tip-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { MagicPageComponent } from './magic-page/magic-page.component';
 import { LearnPageComponent } from './learn-page/learn-page.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { LearnPageComponent } from './learn-page/learn-page.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule
   ],
   providers: [],

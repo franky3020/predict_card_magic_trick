@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { LocalStorageService } from '../local-storage.service';
+import { VersionCheckService } from '../version-check.service';
 import { Router } from '@angular/router';
 import { NgZone } from '@angular/core';
+import { VersionRes } from '../apiRes/VersionRes';
 
 
 declare var deviceInfo: any;
@@ -25,7 +27,8 @@ export class HomePageComponent {
   constructor(
     private localStorageService: LocalStorageService,
     private router: Router,
-    private zone: NgZone
+    private zone: NgZone,
+    private versionCheckService: VersionCheckService
   ) {
 
   }
@@ -39,10 +42,26 @@ export class HomePageComponent {
           this.zone.run(() => {
             this.appVersion = version;
           });
+
+          this.versionCheckService.getVersion().subscribe((res: {[version: string]: VersionRes}) => {
+            console.log("res['1.3.7'].forceUpdate: ");
+            console.log(res["1.3.7"].forceUpdate);
+            console.log("res['1.3.8'].forceUpdate: ");
+            console.log(res["1.3.8"].forceUpdate);
+          });
+
+
         });
       }
     }, false);
-  
+
+    // for dev test
+    this.versionCheckService.getVersion().subscribe((res: {[version: string]: VersionRes}) => {
+      console.log("res['1.3.7'].forceUpdate: ");
+      console.log(res["1.3.7"].forceUpdate);
+      console.log("res['1.3.8'].forceUpdate: ");
+      console.log(res["1.3.8"].forceUpdate);
+    });
   }
 
   goToAppStroe() {
