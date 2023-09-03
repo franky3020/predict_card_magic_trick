@@ -18,6 +18,11 @@
     font-size: 30px;
 }
 
+.version-text {
+    margin: 1rem;
+    font-size: 16px;
+}
+
 @media screen and (max-height: 650px){
 
     .app-link {

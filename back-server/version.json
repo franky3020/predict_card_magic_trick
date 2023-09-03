@@ -1,0 +1,12 @@
+{
+    "1.3.6": {
+        "forceUpdate": true,
+        "minSDK": "24",
+        "miniOS": "11.0"
+    },
+    "1.3.7": {
+        "forceUpdate": false,
+        "minSDK": "24",
+        "miniOS": "11.0"
+    }
+}

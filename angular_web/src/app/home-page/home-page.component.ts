@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
 import { LocalStorageService } from '../local-storage.service';
 import { Router } from '@angular/router';
+import { NgZone } from '@angular/core';
+
 
 declare var deviceInfo: any;
+declare var cordova: any;
 
 const googlePlayLink = 'https://play.google.com/store/apps/details?id=tw.franky.predict_card';
 const appStoreLink = 'itms-apps://itunes.apple.com/us/app/predict-card-magic-trick/id6445894214';
@@ -17,15 +20,29 @@ export class HomePageComponent {
   isUserLearned = false;
   appLink = '';
 
+  appVersion = '';
+
   constructor(
     private localStorageService: LocalStorageService,
     private router: Router,
+    private zone: NgZone
   ) {
 
   }
 
   ngOnInit() {
     this.isUserLearned = this.localStorageService.isUserLearned();
+
+    document.addEventListener("deviceready", () => {
+      if (typeof cordova !== "undefined") {
+        cordova.getAppVersion.getVersionNumber().then((version: any) => {
+          this.zone.run(() => {
+            this.appVersion = version;
+          });
+        });
+      }
+    }, false);
+  
   }
 
   goToAppStroe() {
