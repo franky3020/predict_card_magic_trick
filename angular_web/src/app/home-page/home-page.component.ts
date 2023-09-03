@@ -56,11 +56,12 @@ export class HomePageComponent {
     }, false);
 
     // for dev test
-    this.versionCheckService.getVersion().subscribe((res: {[version: string]: VersionRes}) => {
-      console.log("res['1.3.7'].forceUpdate: ");
-      console.log(res["1.3.7"].forceUpdate);
-      console.log("res['1.3.8'].forceUpdate: ");
-      console.log(res["1.3.8"].forceUpdate);
+    this.versionCheckService.checkNeedToForceUpdate("1.3.7").then((isNeedForceUpdate) => {
+      if (isNeedForceUpdate) {
+        console.log("need update");
+      } else {
+        console.log("Not need update");
+      }
     });
   }
 

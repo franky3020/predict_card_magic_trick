@@ -8,6 +8,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { MagicPageComponent } from './magic-page/magic-page.component';
 import { LearnPageComponent } from './learn-page/learn-page.component';
 import { HttpClientModule } from '@angular/common/http';
+import { RemindPopupComponent } from './component/remind-popup/remind-popup.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { HttpClientModule } from '@angular/common/http';
     TipPageComponent,
     HomePageComponent,
     MagicPageComponent,
-    LearnPageComponent
+    LearnPageComponent,
+    RemindPopupComponent
   ],
   imports: [
     BrowserModule,
