@@ -33,6 +33,7 @@
     <platform name="ios">
         <!-- Android 要用 預設的 https , ios 才要用 app, 如果Android 用 app, 則無法調整亮度, 這是測試出來的 原因不明 -->
         <preference name="scheme" value="app" />
+        <preference name="SuppressesLongPressGesture" value="true" />
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
 
