@@ -10,12 +10,11 @@ declare var device: any;
 export class VersionCheckService {
   constructor(private http: HttpClient) {}
 
-
   checkNeedToForceUpdate(version: string): Promise<boolean> {
     return new Promise((resolve) => {
       this.http
         .get<VersionRes>(
-          'http://localhost:3000/appversion'
+          'http://frankyya.com:37000/appversion'
         )
         .subscribe({
           next: (res) => {

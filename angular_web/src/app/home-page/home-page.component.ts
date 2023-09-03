@@ -45,15 +45,17 @@ export class HomePageComponent {
           this.zone.run(() => {
             this.appVersion = version;
           });
+          this.checkVersionThenGoUpdate();
         });
       }
     }, false);
 
-    // for dev test
+  }
+
+  checkVersionThenGoUpdate() {
     this.versionCheckService.checkNeedToForceUpdate("1.3.6").then((isNeedForceUpdate) => {
       if (isNeedForceUpdate) {
         console.log("need update");
-
         this.dialog.open(RemindPopupComponent, {
           data: {clickFunc: () => {
             this.goToAppStroe();
