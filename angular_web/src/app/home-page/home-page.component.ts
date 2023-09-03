@@ -4,10 +4,13 @@ import { VersionCheckService } from '../version-check.service';
 import { Router } from '@angular/router';
 import { NgZone } from '@angular/core';
 import { VersionRes } from '../apiRes/VersionRes';
-
+import {MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
+import { RemindPopupComponent } from "../component/remind-popup/remind-popup.component";
 
 declare var deviceInfo: any;
 declare var cordova: any;
+
+
 
 const googlePlayLink = 'https://play.google.com/store/apps/details?id=tw.franky.predict_card';
 const appStoreLink = 'itms-apps://itunes.apple.com/us/app/predict-card-magic-trick/id6445894214';
@@ -28,7 +31,8 @@ export class HomePageComponent {
     private localStorageService: LocalStorageService,
     private router: Router,
     private zone: NgZone,
-    private versionCheckService: VersionCheckService
+    private versionCheckService: VersionCheckService,
+    private dialog: MatDialog
   ) {
 
   }
@@ -56,9 +60,18 @@ export class HomePageComponent {
     }, false);
 
     // for dev test
-    this.versionCheckService.checkNeedToForceUpdate("1.3.7").then((isNeedForceUpdate) => {
+    this.versionCheckService.checkNeedToForceUpdate("1.3.6").then((isNeedForceUpdate) => {
       if (isNeedForceUpdate) {
         console.log("need update");
+
+        this.dialog.open(RemindPopupComponent, {
+          data: {clickFunc: () => {
+            this.goToAppStroe();
+          },
+          remindText: 'Please update to the latest version',
+          btnText: "Go to download"}
+        });
+
       } else {
         console.log("Not need update");
       }

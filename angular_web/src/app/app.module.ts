@@ -9,6 +9,7 @@ import { MagicPageComponent } from './magic-page/magic-page.component';
 import { LearnPageComponent } from './learn-page/learn-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RemindPopupComponent } from './component/remind-popup/remind-popup.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { RemindPopupComponent } from './component/remind-popup/remind-popup.comp
   imports: [
     BrowserModule,
     HttpClientModule,
+    MatDialogModule,
     AppRoutingModule
   ],
   providers: [],

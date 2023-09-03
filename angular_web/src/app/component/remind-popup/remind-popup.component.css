@@ -1,0 +1,12 @@
+.remind-window {
+    width: 80vw;
+    height: 50vw;
+}
+
+.remind-header {
+    height: 70%;
+}
+
+.remind-body {
+    height: 30%;
+}
