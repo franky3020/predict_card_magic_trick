@@ -20,7 +20,9 @@ https://www.youtube.com/watch?v=ppQnhk8IS2I
 
 
 ## 版本檢查server 部署方法
-會同時運行兩個server, 可 ,防止替換過程中,版本檢查失效
+需自行將 server.key, 與 frankyya_com.crt 放入 back-server 資料夾
+
+同時運行兩個server, 可防止替換過程中,版本檢查失效
 1. cd back-server
 2. bash deploy_docker.sh
 3. 檢查一下有沒有問題 再部署第二的備份用server
