@@ -9,7 +9,7 @@ const app = express();
 app.use(cors());
 const port = 3000;
 
-app.get("/appVersion", (req, res) => {
+app.get("/app_version", (req, res) => {
   res.send(versionList);
 });
 
