@@ -5,6 +5,9 @@ import { AppVersionInfo } from './entity/AppVersionInfo';
 
 declare var device: any;
 
+const SERVER_URL_1 = 'https://frankyya.com:37002';
+const SERVER_URL_2 = 'https://frankyya.com:37003';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -15,44 +18,37 @@ export class VersionCheckService {
     let appVersionInfo: AppVersionInfo | undefined = undefined;
     try {
       appVersionInfo = await this.getAppVersionInfo(
-        'https://frankyya.com:37002/app_version'
+        SERVER_URL_1 + '/app_version'
       );
-      console.log('appVersionInfo:');
-      console.log(appVersionInfo);
     } catch (err) {
-      console.error('https://frankyya.com:37002/app_version has fail');
+      console.error(SERVER_URL_1 + 'has fail');
       console.error('try other server');
     }
 
     try {
       if (typeof appVersionInfo === 'undefined') {
         appVersionInfo = await this.getAppVersionInfo(
-          'https://frankyya.com:37003/app_version'
+          SERVER_URL_2 + '/app_version'
         );
       }
     } catch (err) {
-      console.error('https://frankyya.com:37003/appversion has fail');
+      console.error(SERVER_URL_2 + 'has fail');
+      // server 失效 所以終止執行 且回傳 false
       return false;
     }
 
     const versionRes = appVersionInfo.versionDict[version];
-    console.log('versionRes:');
-    console.log(versionRes);
-    if (typeof versionRes !== 'undefined') {
-      if (versionRes.forceUpdate) {
-        const lastVersion = appVersionInfo.lastVersion;
-        console.log('in versionRes.forceUpdate:');
-        console.log('lastVersion:');
-        console.log(lastVersion);
+    if (typeof versionRes === 'undefined') {
+      // API格式 失效 所以終止執行 且回傳 false
+      return false;
+    }
 
-        return await this.isNewVersionFitUserDevice(
-          lastVersion.minSDK,
-          lastVersion.miniOS
-        );
-      } else {
-        console.log('not in versionRes.forceUpdate:');
-        return false;
-      }
+    if (versionRes.forceUpdate) {
+      const lastVersion = appVersionInfo.lastVersion;
+      return await this.isNewVersionFitUserDevice(
+        lastVersion.minSDK,
+        lastVersion.miniOS
+      );
     } else {
       return false;
     }
@@ -66,7 +62,7 @@ export class VersionCheckService {
           return resolve(appVersionInfo);
         },
         error: (error) => {
-          console.error('getAppVersionInfo fail');
+          console.error('getAppVersionInfo fail, error: ', error);
           return reject();
         },
       });
@@ -101,12 +97,16 @@ export class VersionCheckService {
               sdkVersion,
               androidMinSdk
             );
-            console.log('isFit: ', isFit);
             return resolve(isFit);
           } else if (platform === 'iOS') {
-            return resolve(
-              VersionCheckService.isV1GreatThanV2(iOSversion, iOSMinVersion)
+            const isFit = VersionCheckService.isV1GreatThanV2(
+              iOSversion,
+              iOSMinVersion
             );
+            return resolve(isFit);
+          } else {
+            console.error('isNewVersionFitUserDevice fail');
+            return resolve(false);
           }
         },
         false

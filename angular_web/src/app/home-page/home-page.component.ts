@@ -43,7 +43,6 @@ export class HomePageComponent {
     document.addEventListener(
       'deviceready',
       () => {
-        console.log("home-page deviceready run");
         if (typeof cordova !== 'undefined') {
           cordova.getAppVersion.getVersionNumber().then((version: any) => {
             this.zone.run(() => {
@@ -62,22 +61,23 @@ export class HomePageComponent {
       .checkNeedToForceUpdate(version)
       .then((isNeedForceUpdate) => {
         if (isNeedForceUpdate) {
-          console.log('need update');
-          this.zone.run(() => {
-            this.dialog.open(RemindPopupComponent, {
-              data: {
-                clickFunc: () => {
-                  this.goToAppStroe();
-                },
-                remindText: 'Please update to the latest version',
-                btnText: 'Go to download',
-              },
-            });
-          })
-        } else {
-          console.log('Not need update');
+          this.popupUpdateDialog();
         }
       });
+  }
+
+  popupUpdateDialog() {
+    this.zone.run(() => {
+      this.dialog.open(RemindPopupComponent, {
+        data: {
+          clickFunc: () => {
+            this.goToAppStroe();
+          },
+          remindText: 'Please update to the latest version',
+          btnText: 'Go to download',
+        },
+      });
+    })
   }
 
   goToAppStroe() {
