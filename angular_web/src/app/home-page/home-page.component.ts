@@ -48,6 +48,7 @@ export class HomePageComponent {
             this.zone.run(() => {
               this.appVersion = version;
             });
+            // TODO: 需防止使用者底start 後 突然啟動版本檢查
             this.checkVersionThenGoUpdate(version);
           });
         }
