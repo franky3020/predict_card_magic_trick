@@ -43,6 +43,7 @@ export class HomePageComponent {
     document.addEventListener(
       'deviceready',
       () => {
+        console.log("home-page deviceready run");
         if (typeof cordova !== 'undefined') {
           cordova.getAppVersion.getVersionNumber().then((version: any) => {
             this.zone.run(() => {
