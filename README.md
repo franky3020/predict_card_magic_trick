@@ -19,6 +19,15 @@ https://www.youtube.com/watch?v=ppQnhk8IS2I
 2. bash build.sh
 
 
+## 版本檢查server 部署方法
+會同時運行兩個server, 可 ,防止替換過程中,版本檢查失效
+1. cd back-server
+2. bash deploy_docker.sh
+3. 檢查一下有沒有問題 再部署第二的備份用server
+4. bash deploy_docker_2.sh
+
+
+
 ## app id
 iOS: tw.franky.predictcard
 
