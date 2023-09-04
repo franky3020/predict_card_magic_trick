@@ -10,14 +10,14 @@
       "minSDK": "24",
       "miniOS": "11.0"
     },
-    "1.4.0": {
+    "1.4.1": {
       "forceUpdate": false,
       "minSDK": "24",
       "miniOS": "11.0"
     }
   },
   "lastVersion": {
-    "version": "1.4.0",
+    "version": "1.4.1",
     "minSDK": "24",
     "miniOS": "11.0"
   }
