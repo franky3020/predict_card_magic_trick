@@ -47,13 +47,14 @@ export class HomePageComponent implements OnDestroy, OnInit {
   ngOnInit() {
     this.isUserLearned = this.localStorageService.isUserLearned();
 
-    if (typeof appVersionInfo !== "undefined") {
-      this.appVersion = appVersionInfo;
-      this.checkVersionThenGoUpdate(appVersionInfo);
-    }
-
     setTimeout(() => {
       this.showLoading = false;
+
+      if (typeof appVersionInfo !== "undefined") {
+        this.appVersion = appVersionInfo;
+        this.checkVersionThenGoUpdate(appVersionInfo);
+      }
+
     }, 500);
 
     // for dev: 以下可測試 popupUpdateDialog 會不會在跳轉後還會顯示
