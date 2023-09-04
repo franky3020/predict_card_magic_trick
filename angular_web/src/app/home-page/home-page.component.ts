@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { LocalStorageService } from '../local-storage.service';
 import { VersionCheckService } from '../version-check.service';
 import { Router } from '@angular/router';
@@ -11,8 +11,9 @@ import {
 } from '@angular/material/dialog';
 import { RemindPopupComponent } from '../component/remind-popup/remind-popup.component';
 
-declare var deviceInfo: any;
-declare var cordova: any;
+declare let deviceInfo: any;
+declare let appVersionInfo: any;
+declare let cordova: any;
 
 const googlePlayLink =
   'https://play.google.com/store/apps/details?id=tw.franky.predict_card';
@@ -23,11 +24,15 @@ const appStoreLink =
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.css'],
 })
-export class HomePageComponent {
+export class HomePageComponent implements OnDestroy, OnInit {
   isUserLearned = false;
   appLink = '';
 
   appVersion = '';
+
+  showLoading = true;
+
+  isPageDestroy = false;
 
   constructor(
     private localStorageService: LocalStorageService,
@@ -35,26 +40,30 @@ export class HomePageComponent {
     private zone: NgZone,
     private versionCheckService: VersionCheckService,
     private dialog: MatDialog
-  ) {}
+  ) {
+  }
+
 
   ngOnInit() {
     this.isUserLearned = this.localStorageService.isUserLearned();
 
-    document.addEventListener(
-      'deviceready',
-      () => {
-        if (typeof cordova !== 'undefined') {
-          cordova.getAppVersion.getVersionNumber().then((version: any) => {
-            this.zone.run(() => {
-              this.appVersion = version;
-            });
-            // TODO: 需防止使用者底start 後 突然啟動版本檢查
-            this.checkVersionThenGoUpdate(version);
-          });
-        }
-      },
-      false
-    );
+    if (typeof appVersionInfo !== "undefined") {
+      this.appVersion = appVersionInfo;
+      this.checkVersionThenGoUpdate(appVersionInfo);
+    }
+
+    setTimeout(() => {
+      this.showLoading = false;
+    }, 500);
+
+    // for dev: 以下可測試 popupUpdateDialog 會不會在跳轉後還會顯示
+    // setTimeout(() => {
+    //   this.popupUpdateDialog();
+    // }, 5000);
+  }
+
+  ngOnDestroy(): void {
+    this.isPageDestroy = true;
   }
 
   checkVersionThenGoUpdate(version: string) {
@@ -69,15 +78,17 @@ export class HomePageComponent {
 
   popupUpdateDialog() {
     this.zone.run(() => {
-      this.dialog.open(RemindPopupComponent, {
-        data: {
-          clickFunc: () => {
-            this.goToAppStroe();
+      if (this.isPageDestroy === false) { // 如果以跳轉到別頁 則不需要 跳出提示視窗
+        this.dialog.open(RemindPopupComponent, {
+          data: {
+            clickFunc: () => {
+              this.goToAppStroe();
+            },
+            remindText: 'Please update to the latest version',
+            btnText: 'Go to download',
           },
-          remindText: 'Please update to the latest version',
-          btnText: 'Go to download',
-        },
-      });
+        });
+      }
     })
   }
 

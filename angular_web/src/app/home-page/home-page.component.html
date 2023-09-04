@@ -1,3 +1,8 @@
+
+<div *ngIf="showLoading" class="spinner-border text-success position-fixed loading" role="status">
+  <span class="sr-only"></span>
+</div>
+
 <div class="home-page d-flex justify-content-center align-items-center">
   <div class="d-flex flex-column">
     <img
@@ -8,7 +13,7 @@
     />
 
     <button
-      *ngIf="isUserLearned"
+      *ngIf="!showLoading && isUserLearned"
       type="button"
       class="btn btn-dark op-btn"
       (click)="goToMagicPage()"
@@ -17,7 +22,7 @@
     </button>
 
     <button
-      *ngIf="isUserLearned"
+      *ngIf="!showLoading && isUserLearned"
       type="button"
       class="btn btn-dark op-btn"
       (click)="goToTipPage()"
@@ -26,6 +31,7 @@
     </button>
 
     <button
+      *ngIf="!showLoading" 
       type="button"
       class="btn btn-dark op-btn"
       [ngClass]="{ 'text-danger': !isUserLearned }"
@@ -37,3 +43,5 @@
     <p *ngIf="appVersion" class="version-text text-center text-white"> version: {{appVersion}} </p>
   </div>
 </div>
+
+
