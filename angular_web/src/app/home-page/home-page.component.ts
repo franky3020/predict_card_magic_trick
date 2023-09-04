@@ -48,14 +48,17 @@ export class HomePageComponent implements OnDestroy, OnInit {
     this.isUserLearned = this.localStorageService.isUserLearned();
 
     setTimeout(() => {
-      this.showLoading = false;
 
       if (typeof appVersionInfo !== "undefined") {
         this.appVersion = appVersionInfo;
-        this.checkVersionThenGoUpdate(appVersionInfo);
+        this.checkVersionThenGoUpdate(this.appVersion);
       }
 
-    }, 500);
+      setTimeout( ()=>{
+        this.showLoading = false;
+      }, 250);
+
+    }, 250);
 
     // for dev: 以下可測試 popupUpdateDialog 會不會在跳轉後還會顯示
     // setTimeout(() => {
