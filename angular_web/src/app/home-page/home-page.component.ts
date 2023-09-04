@@ -62,15 +62,17 @@ export class HomePageComponent {
       .then((isNeedForceUpdate) => {
         if (isNeedForceUpdate) {
           console.log('need update');
-          this.dialog.open(RemindPopupComponent, {
-            data: {
-              clickFunc: () => {
-                this.goToAppStroe();
+          this.zone.run(() => {
+            this.dialog.open(RemindPopupComponent, {
+              data: {
+                clickFunc: () => {
+                  this.goToAppStroe();
+                },
+                remindText: 'Please update to the latest version',
+                btnText: 'Go to download',
               },
-              remindText: 'Please update to the latest version',
-              btnText: 'Go to download',
-            },
-          });
+            });
+          })
         } else {
           console.log('Not need update');
         }

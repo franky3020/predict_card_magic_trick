@@ -17,6 +17,8 @@ export class VersionCheckService {
       appVersionInfo = await this.getAppVersionInfo(
         'https://frankyya.com:37002/app_version'
       );
+      console.log('appVersionInfo:');
+      console.log(appVersionInfo);
     } catch (err) {
       console.error('https://frankyya.com:37002/app_version has fail');
       console.error('try other server');
@@ -29,27 +31,31 @@ export class VersionCheckService {
         );
       }
     } catch (err) {
-      console.error('https://frankyya.com:37002/appversion has fail');
+      console.error('https://frankyya.com:37003/appversion has fail');
       return false;
     }
 
     const versionRes = appVersionInfo.versionDict[version];
+    console.log('versionRes:');
+    console.log(versionRes);
     if (typeof versionRes !== 'undefined') {
       if (versionRes.forceUpdate) {
         const lastVersion = appVersionInfo.lastVersion;
-        this.isNewVersionFitUserDevice(
+        console.log('in versionRes.forceUpdate:');
+        console.log('lastVersion:');
+        console.log(lastVersion);
+
+        return await this.isNewVersionFitUserDevice(
           lastVersion.minSDK,
           lastVersion.miniOS
-        ).then((isFit) => {
-          return isFit;
-        });
+        );
       } else {
+        console.log('not in versionRes.forceUpdate:');
         return false;
       }
     } else {
       return false;
     }
-    return false;
   }
 
   getAppVersionInfo(url: string): Promise<AppVersionInfo> {
@@ -77,19 +83,29 @@ export class VersionCheckService {
       //   return resolve(true);
       // }
 
+      console.log('androidMinSdk:', androidMinSdk);
+      console.log('iOSMinVersion:', iOSMinVersion);
+
       document.addEventListener(
         'deviceready',
         () => {
-          const version = device.version;
+          const iOSversion = device.version;
+          const sdkVersion = device.sdkVersion;
+
           const platform = device.platform;
+          console.log('device:');
+          console.log(device);
 
           if (platform === 'Android') {
-            return resolve(
-              VersionCheckService.isV1GreatThanV2(version, androidMinSdk)
+            const isFit = VersionCheckService.isV1GreatThanV2(
+              sdkVersion,
+              androidMinSdk
             );
+            console.log('isFit: ', isFit);
+            return resolve(isFit);
           } else if (platform === 'iOS') {
             return resolve(
-              VersionCheckService.isV1GreatThanV2(version, iOSMinVersion)
+              VersionCheckService.isV1GreatThanV2(iOSversion, iOSMinVersion)
             );
           }
         },
