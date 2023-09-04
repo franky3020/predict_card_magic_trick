@@ -10,6 +10,8 @@ app.use(cors());
 const port = 3000;
 
 app.get("/app_version", (req, res) => {
+  const date = new Date();
+  console.log(date, " get app_version");
   res.send(versionList);
 });
 
