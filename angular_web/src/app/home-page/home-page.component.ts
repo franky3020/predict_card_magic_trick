@@ -40,37 +40,29 @@ export class HomePageComponent implements OnDestroy, OnInit {
     private zone: NgZone,
     private versionCheckService: VersionCheckService,
     private dialog: MatDialog
-  ) {
-  }
-
+  ) {}
 
   ngOnInit() {
     this.isUserLearned = this.localStorageService.isUserLearned();
 
-    if (typeof appVersionInfo === "undefined") {
+    if (typeof appVersionInfo === 'undefined') {
+      setTimeout(() => {
+        if (typeof appVersionInfo !== 'undefined') {
+          this.appVersion = appVersionInfo;
+          this.checkVersionThenGoUpdate(this.appVersion);
+        }
 
-    setTimeout(() => {
-
-      if (typeof appVersionInfo !== "undefined") {
-        this.appVersion = appVersionInfo;
-        this.checkVersionThenGoUpdate(this.appVersion);
-      }
-
-      setTimeout( ()=>{
-        this.showLoading = false;
+        setTimeout(() => {
+          this.showLoading = false;
+        }, 250);
       }, 250);
-
-    }, 250);
-
     } else {
-
       this.appVersion = appVersionInfo;
       this.checkVersionThenGoUpdate(this.appVersion);
 
       setTimeout(() => {
         this.showLoading = false;
       }, 500);
-
     }
 
     // for dev: 以下可測試 popupUpdateDialog 會不會在跳轉後還會顯示
@@ -95,7 +87,8 @@ export class HomePageComponent implements OnDestroy, OnInit {
 
   popupUpdateDialog() {
     this.zone.run(() => {
-      if (this.isPageDestroy === false) { // 如果以跳轉到別頁 則不需要 跳出提示視窗
+      if (this.isPageDestroy === false) {
+        // 如果以跳轉到別頁 則不需要 跳出提示視窗
         this.dialog.open(RemindPopupComponent, {
           data: {
             clickFunc: () => {
@@ -106,7 +99,7 @@ export class HomePageComponent implements OnDestroy, OnInit {
           },
         });
       }
-    })
+    });
   }
 
   goToAppStroe() {
