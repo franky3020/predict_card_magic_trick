@@ -43,6 +43,9 @@ export class HomePageComponent implements OnDestroy, OnInit {
   ) {}
 
   ngOnInit() {
+
+    this.addBackBtnEvent();
+
     this.isUserLearned = this.localStorageService.isUserLearned();
 
     if (typeof appVersionInfo === 'undefined') {
@@ -71,8 +74,21 @@ export class HomePageComponent implements OnDestroy, OnInit {
     // }, 5000);
   }
 
+  addBackBtnEvent() {
+    document.addEventListener("backbutton", this.doNothing, false);
+  }
+
+  removeBackBtnEvent() {
+    document.removeEventListener("backbutton", this.doNothing, false);
+  }
+
+  doNothing() {
+    // do notthing
+  }
+
   ngOnDestroy(): void {
     this.isPageDestroy = true;
+    this.removeBackBtnEvent();
   }
 
   checkVersionThenGoUpdate(version: string) {
