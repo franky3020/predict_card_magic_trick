@@ -5,8 +5,8 @@ import { AppVersionInfo } from './entity/AppVersionInfo';
 
 declare var device: any;
 
-const SERVER_URL_1 = 'https://frankyya.com:37002';
-const SERVER_URL_2 = 'https://frankyya.com:37003';
+const SERVER_URL_1 = 'https://lvmbcmkf7bxjb46zw3jtpz6gj40mmuks.lambda-url.us-east-2.on.aws';
+const SERVER_URL_2 = 'https://frankyya.com:37003/app_version';
 
 @Injectable({
   providedIn: 'root',
@@ -18,8 +18,9 @@ export class VersionCheckService {
     let appVersionInfo: AppVersionInfo | undefined = undefined;
     try {
       appVersionInfo = await this.getAppVersionInfo(
-        SERVER_URL_1 + '/app_version'
+        SERVER_URL_1
       );
+      
     } catch (err) {
       console.error(SERVER_URL_1 + 'has fail');
       console.error('try other server');
@@ -28,7 +29,7 @@ export class VersionCheckService {
     try {
       if (typeof appVersionInfo === 'undefined') {
         appVersionInfo = await this.getAppVersionInfo(
-          SERVER_URL_2 + '/app_version'
+          SERVER_URL_2
         );
       }
     } catch (err) {
@@ -36,6 +37,8 @@ export class VersionCheckService {
       // server 失效 所以終止執行 且回傳 false
       return false;
     }
+
+    console.log("appVersionInfo:", appVersionInfo);
 
     const versionRes = appVersionInfo.versionDict[version];
     if (typeof versionRes === 'undefined') {
