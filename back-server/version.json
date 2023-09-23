@@ -4,6 +4,11 @@
       "forceUpdate": true,
       "minSDK": "24",
       "miniOS": "11.0"
+    },
+    "1.4.2": {
+      "forceUpdate": true,
+      "minSDK": "24",
+      "miniOS": "11.0"
     }
   },
   "lastVersion": {
