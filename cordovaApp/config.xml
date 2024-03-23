@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="tw.franky.predictcard" version="1.4.6" android-packageName="tw.franky.predict_card" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="tw.franky.predictcard" version="1.4.7" android-packageName="tw.franky.predict_card" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Predict Card Magic Trick</name>
     <description>Predict card magic app</description>
     <author email="210238hwsh@gmail.com">
