@@ -1,22 +1,23 @@
 
-<div *ngIf="showLoading" class="spinner-border text-success position-fixed loading" role="status">
+<div *ngIf="showLoading" class="spinner-border text-light position-fixed loading" role="status">
   <span class="sr-only"></span>
 </div>
 
 <div class="home-page d-flex justify-content-center align-items-center">
   <div class="d-flex flex-column">
     <img
+      *ngIf="!hideTitle"
       class="mx-auto app-link"
       style="width: 100%"
       src="assets/PredictCardText.png"
-      (click)="goToAppStroe()"
+      (touchstart)="goToAppStroe()"
     />
 
     <button
       *ngIf="!showLoading && isUserLearned"
       type="button"
       class="btn btn-dark op-btn"
-      (click)="goToMagicPage()"
+      (touchstart)="goToMagicPage()"
     >
       Start
     </button>
@@ -25,16 +26,16 @@
       *ngIf="!showLoading && isUserLearned"
       type="button"
       class="btn btn-dark op-btn"
-      (click)="goToTipPage()"
+      (touchstart)="goToTipPage()"
     >
       Tip
     </button>
 
     <button
-      *ngIf="!showLoading" 
+      *ngIf="!showLoading"
       type="button"
       class="btn btn-dark op-btn"
-      (click)="goToLearnPage()"
+      (touchstart)="goToLearnPage()"
     >
       Learn
     </button>

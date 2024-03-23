@@ -31,6 +31,7 @@ export class HomePageComponent implements OnDestroy, OnInit {
   appVersion = '';
 
   showLoading = true;
+  hideTitle = false;
 
   isPageDestroy = false;
 
@@ -119,6 +120,7 @@ export class HomePageComponent implements OnDestroy, OnInit {
   }
 
   goToAppStroe() {
+    console.log('click goToAppStroe botton');
     if (typeof deviceInfo !== 'undefined') {
       const platform = deviceInfo.platform;
 
@@ -137,10 +139,15 @@ export class HomePageComponent implements OnDestroy, OnInit {
   }
 
   goToMagicPage() {
-    this.router.navigate(['/magic-page']);
+    this.showLoading = true;
+    this.hideTitle = true;
+    setTimeout(() => {
+      this.router.navigate(['/magic-page']);
+    }, 500);
   }
 
   goToTipPage() {
+    console.log('click goToTipPage botton');
     this.router.navigate(['/tip-page']);
   }
 

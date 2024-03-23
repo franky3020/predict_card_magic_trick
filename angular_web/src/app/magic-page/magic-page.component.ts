@@ -69,14 +69,14 @@ export class MagicPageComponent {
             this.cordovaPluginService.setBrightness(0.5);
             this.openBrightness = true;
           }
-          
+
           sketch.ellipse(sketch.mouseX, sketch.mouseY, 80, 80);
         }
       };
     };
 
     this.p5Obj = new p5(s);
-    
+
 
     this.addSetCradEvent();
     this.addBackToHomePageEvent();
@@ -187,6 +187,7 @@ export class MagicPageComponent {
   }
 
   backToHomePage(event: TouchEvent) {
+    // for dev: 將以下 改成 1, 則可在網頁版中測試效果
     if (event.touches.length === 2) {
 
       if (typeof this.keepTouchTwoFingerTimer !== "undefined") {
