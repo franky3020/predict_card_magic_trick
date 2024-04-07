@@ -1,9 +1,9 @@
 #!/bin/bash
 set -x #echo on
 
-
-npm i
 rm -rf ./node_modules
+npm i
+
 rm -rf ./platforms
 rm -rf ./plugins
 

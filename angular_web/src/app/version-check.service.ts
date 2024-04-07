@@ -20,21 +20,13 @@ export class VersionCheckService {
       appVersionInfo = await this.getAppVersionInfo(
         SERVER_URL_1
       );
-      
+
     } catch (err) {
       console.error(SERVER_URL_1 + 'has fail');
       console.error('try other server');
     }
 
-    try {
-      if (typeof appVersionInfo === 'undefined') {
-        appVersionInfo = await this.getAppVersionInfo(
-          SERVER_URL_2
-        );
-      }
-    } catch (err) {
-      console.error(SERVER_URL_2 + 'has fail');
-      // server 失效 所以終止執行 且回傳 false
+    if (typeof appVersionInfo === 'undefined') {
       return false;
     }
 
